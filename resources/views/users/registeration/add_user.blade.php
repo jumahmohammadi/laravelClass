@@ -130,7 +130,7 @@ label.light {
       <div class="row">
     <div class="col-md-12">
       <form action="index.html" method="post">
-        <h1> Sign Up </h1>
+        <h1> {{$page_title}} </h1>
         
         <fieldset>
           

@@ -4,6 +4,7 @@
   <tr>
     <th>ID</th>
     <th>title</th>
+    <th>Content</th>
     <th>operation</th>
   </tr>
   
@@ -13,7 +14,8 @@
   @foreach($posts as $post)
   <tr>
     <td> {{$counter++}}</td>
-    <td>{{$post}}</td>
+    <td>{{$post->title}}</td>
+    <td>{{$post->content}}</td>
     <td><button>Delete</button>/<button>Edit</button></td>
   </tr>
   @endforeach

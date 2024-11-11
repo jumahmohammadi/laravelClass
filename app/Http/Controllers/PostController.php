@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post; 
 
 class PostController extends Controller
 {
@@ -15,11 +16,9 @@ class PostController extends Controller
     }
 
     function showAllPosts(){
-        $allPosts=[
-            'this is first title',
-            'this is second title',
-            'this is third title',
-        ]; 
+        $allPosts=Post::all();
+        // $singlePost=Post::find(1);
+        // dd($singlePost);
        return view('posts',['page_title'=>'All Posts','posts'=>$allPosts]);
     }
 }

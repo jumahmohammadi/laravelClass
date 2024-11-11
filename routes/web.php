@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/', function () {
@@ -19,4 +20,5 @@ Route::get('/all_posts',[PostController::class,'allPosts']);
 Route::get('/single_post',[PostController::class,'singlePost']);
 Route::get('/all-posts',[PostController::class,'showAllPosts']);
 Route::get('/sign-up',[UserController::class,'signupform']);
+Route::get('/categories',[CategoryController::class,'allCategory']);
 
