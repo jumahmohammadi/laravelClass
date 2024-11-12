@@ -21,5 +21,9 @@ class PostController extends Controller
         // dd($singlePost);
        return view('posts',['page_title'=>'All Posts','posts'=>$allPosts]);
     }
+
+    function layout(){
+        return view('layout.app');
+    }
 }
 
