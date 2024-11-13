@@ -10,6 +10,7 @@
 
 
 @section('mainContent')
+<x-message text="Post updated successfully"></x-message>	
 <div>
     <h1> {{$page_title}}</h1>
 	<table border="1">

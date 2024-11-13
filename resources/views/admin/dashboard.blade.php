@@ -7,7 +7,8 @@
 @endsection
 
 @section('mainContent')
-			
+<x-message text="you are loged in successfully"></x-message>			  
+
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">

@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/',function(){echo "Welcome to website";});
-Route::get('/admin/dashboard',[DashboardController::class,'index']);
+Route::get('/admin/dashboard',[DashboardController::class,'index'])->name('dashbaord');
 Route::get('/admin/posts',[PostController::class,'Posts']);
+Route::get('/admin/categories',[CategoryController::class,'index']);
 
