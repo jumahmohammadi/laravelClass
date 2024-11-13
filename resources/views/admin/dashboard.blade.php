@@ -1,8 +1,13 @@
-@extends('layout.app')   
-   <!-- ============================================================== -->
-                <!-- Three charts -->
-                <!-- ============================================================== -->
-@section('mainContent')				
+@extends('layout.app')
+
+@section('breadcrumb')
+<x-breadcrumb pageTitle="Dashboard">
+  <x-slot name="links"></x-slot>
+</x-breadcrumb>
+@endsection
+
+@section('mainContent')
+			
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-12">
                         <div class="white-box analytics-info">
@@ -326,8 +331,9 @@
                     </div>
                     <!-- /.col -->
                 </div>
-@endsection	
-@section('internal_script')
+@endsection				
+
+@section('internal_javascript')
 <script>
 	/*
 Template Name: Admin Pro Admin
@@ -414,8 +420,6 @@ $(function () {
 </script>			
 @endsection
 
-@section('internal_style')
-  <style>
-   p{color:red}
-  </style>
+@section('internal_css')
+
 @endsection

@@ -21,7 +21,7 @@
     <link href="{{asset('/css/fontawesome-all.min.css')}}" rel="stylesheet">
     <link href="{{asset('/css/themify-icons.css')}}" rel="stylesheet">
     <link href="{{asset('/css/style.min.css')}}" rel="stylesheet">
-	@yield('internal_style')
+	@yield('internal_css')
 </head>
 
 <body>
@@ -190,24 +190,9 @@
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
-            <div class="page-breadcrumb bg-white">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Dashboard</h4>
-                    </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <div class="d-md-flex">
-                            <ol class="breadcrumb ms-auto">
-                                <li><a href="#" class="fw-normal">Dashboard</a></li>
-                            </ol>
-                            <a href="https://www.wrappixel.com/templates/ampleadmin/" target="_blank"
-                                class="btn btn-danger  d-none d-md-block pull-right ms-3 hidden-xs hidden-sm waves-effect waves-light text-white">Upgrade
-                                to Pro</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
+            
+			@yield('breadcrumb')
+			
             <!-- ============================================================== -->
             <!-- End Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -215,7 +200,7 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
-               @yield('mainContent')
+                @yield('mainContent')
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -256,7 +241,8 @@
     <!--chartis chart-->
      <script src="{{asset('js/chartist.min.js')}}"></script>
      <script src="{{asset('js/chartist-plugin-tooltip.min.js')}}"></script>
-	 @yield('internal_script')
+	
+	@yield('internal_javascript')
 </body>
 
 </html>

@@ -1,3 +1,15 @@
+@extends('layout.app')
+
+@section('breadcrumb')
+<x-breadcrumb pageTitle="Posts">
+  <x-slot name="links">
+      / <li>Posts</li>
+  </x-slot>
+</x-breadcrumb>
+@endsection
+
+
+@section('mainContent')
 <div>
     <h1> {{$page_title}}</h1>
 	<table border="1">
@@ -22,3 +34,4 @@
   
 </table>
 </div>
+@endSection
