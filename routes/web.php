@@ -8,7 +8,20 @@ use App\Http\Controllers\DashboardController;
 
 
 Route::get('/',function(){echo "Welcome to website";});
-Route::get('/admin/dashboard',[DashboardController::class,'index'])->name('dashbaord');
-Route::get('/admin/posts',[PostController::class,'Posts']);
-Route::get('/admin/categories',[CategoryController::class,'index']);
+
+Route::prefix('admin')->group(function(){
+    Route::get('/dashboard',[DashboardController::class,'index'])->name('dashbaord');
+    Route::get('/categories',[CategoryController::class,'index'])->name('categories');
+
+  Route::controller(PostController::class)->group(function(){  
+    Route::get('/posts','Posts')->name('posts');
+    Route::get('/add_post','AddPost');
+    Route::get('/edit_post','EditPost');
+    Route::get('/delete_post','DeletePost');
+  });
+
+
+    Route::get('/users',function(){echo "user page";});
+});
+
 

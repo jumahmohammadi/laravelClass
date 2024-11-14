@@ -136,7 +136,7 @@
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/categories')}}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('categories')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
                                 <span class="hide-menu">Categories</span>

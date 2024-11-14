@@ -12,9 +12,12 @@ class message extends Component
      * Create a new component instance.
      */
     public $content; 
-    public function __construct($text)
+    public $alertClass;
+    public function __construct($text,$cls)
      {
         $this->content=$text; 
+        $this->alertClass=$cls;
+
     }
 
     /**

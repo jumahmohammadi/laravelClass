@@ -10,7 +10,7 @@
 
 
 @section('mainContent')
-<x-message text="Post updated successfully"></x-message>	
+<x-message text="Post updated successfully" cls="alert-danger"></x-message>	
 <div>
     <h1> {{$page_title}}</h1>
 	<table border="1">
