@@ -7,9 +7,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
 
-Route::get('/',function(){echo "Welcome to website";});
+Route::get('/',function(){ return view('web.home');});
 
-Route::prefix('admin')->group(function(){
+// Route::middleware('auth')->group(function(){
+Route::prefix('admin')->middleware('auth')->group(function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashbaord');
     Route::get('/categories',[CategoryController::class,'index'])->name('categories');
 
@@ -23,5 +24,5 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/users',function(){echo "user page";});
 });
-
+// });
 

@@ -150,6 +150,15 @@
                                 <span class="hide-menu">Profile</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item">
+                            <form class="sidebar-link waves-effect waves-dark sidebar-link" method="POST" action="{{route('logout')}}"
+                                aria-expanded="false" onclick="this.submit()">
+                                @csrf
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <span class="hide-menu">LogOut</span>
+                            </form>
+                        </li>
                      
                        
                      
