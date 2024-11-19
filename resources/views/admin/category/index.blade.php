@@ -11,17 +11,46 @@
 
 @section('mainContent')
 
-<h1>Categories page</h1>
-{{URL::full()}} <br>
-{{URL::current()}} <br>
-{{URL::previous()}} <br>
- <br>
- <a href="{{URL::previous()}}">Go back</a> <br>
-<a href="{{URL::to('admin/posts')}}">Go to posts page</a> <br>
-<a href="{{URL::to('admin/dashboard')}}">Go to Dashboard </a>
+ <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <h3 class="box-title">Category List</h3>
+                            
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">#</th>
+                                            <th class="border-top-0">Category</th>
+                                            <th class="border-top-0">Actions</th>
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php 
+                                             $counter=1; 
+                                        @endphp
+                                        @foreach ($category as $ct)
 
-
-<br>
+                                        <tr>
+                                            <td>{{$counter++}}</td>
+                                            <td>{{$ct->name}}</td>
+                                            <td></td>
+                                            
+                                        </tr>
+                                        @endforeach
+                                           
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
 
 @endsection
 

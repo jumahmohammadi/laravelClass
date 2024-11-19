@@ -7,7 +7,12 @@
     <title>Document</title>
 </head>
 <body>
+   
+   @if(!Auth::check()) 
     <a href="{{URL::to('login')}}">Login</a> <br>
     <a href="{{URL::to('register')}}">Register</a>
+    @else
+      <a href="{{URL::to('admin/dashboard')}}">GO to Dashboard</a>
+    @endif
 </body>
 </html>

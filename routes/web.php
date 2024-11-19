@@ -6,11 +6,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
-
 Route::get('/',function(){ return view('web.home');});
 
 // Route::middleware('auth')->group(function(){
-Route::prefix('admin')->middleware('auth')->group(function(){
+Route::prefix('admin')->middleware("admin")->group(function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashbaord');
     Route::get('/categories',[CategoryController::class,'index'])->name('categories');
 
