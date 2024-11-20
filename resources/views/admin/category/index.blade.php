@@ -16,14 +16,18 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="white-box">
-                            <h3 class="box-title">Category List</h3>
-                            
+                            <div class="d-flex justify-content-between mb-4">
+                                <h3 class="box-title">Category List</h3>
+                                <a href="{{URL::to('admin/categories/add')}}" class="btn btn-outline-primary">New Category</a>
+                            </div>
+                             
                             <div class="table-responsive">
                                 <table class="table text-nowrap">
                                     <thead>
                                         <tr>
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">Category</th>
+                                            <th class="border-top-0">Description</th>
                                             <th class="border-top-0">Actions</th>
                                           
                                         </tr>
@@ -37,6 +41,7 @@
                                         <tr>
                                             <td>{{$counter++}}</td>
                                             <td>{{$ct->name}}</td>
+                                            <td>{{$ct->description}}</td>
                                             <td></td>
                                             
                                         </tr>
