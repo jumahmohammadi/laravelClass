@@ -13,7 +13,7 @@ Route::prefix('admin')->middleware("admin")->group(function(){
     Route::get('/dashboard',[DashboardController::class,'index'])->name('dashbaord');
     Route::get('/categories',[CategoryController::class,'index'])->name('categories');
     Route::get('/categories/add',[CategoryController::class,'add']);
-    Route::post('/categories/save',[CategoryController::class,'save']);
+    Route::post('/categories/save',[CategoryController::class,'saveCategory']);
 
   Route::controller(PostController::class)->group(function(){  
     Route::get('/posts','Posts')->name('posts');

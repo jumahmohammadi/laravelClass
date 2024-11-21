@@ -20,11 +20,17 @@
                     @csrf
                     <div class="mb-3">
                         <label for="name">Name</label>
-                        <input type="text" name="cname" id="name" class="form-control">
+                        <input type="text" name="cname" id="name" class="form-control" value="{{old('cname')}}">
+                        @if($errors->has('cname'))
+                            <span class="text-danger">{{$errors->first('cname')}}</span>
+                        @endif
                     </div>
                     <div class="mb-3">
                         <label for="description">Description</label>
-                        <textarea name="cdescription" id="description" class="form-control" rows="5"></textarea>
+                        <textarea name="cdescription" id="description" class="form-control" rows="5">{{old('cdescription')}}</textarea>
+                        @if($errors->has('cdescription'))
+                        <span class="text-danger">{{$errors->first('cdescription')}}</span>
+                    @endif
                     </div>
                     <div class="mb-3">
                         <button class="btn btn-primary btn-lg">Save</button>
