@@ -63,4 +63,34 @@ class CategoryController extends Controller
     return redirect('admin/categories');
     // return back();
   }
+
+  public function edit($category_id){
+    $category=Category::find($category_id);
+    
+    return view('admin.category.edit',['category'=>$category]);
+  }
+
+  public function update(Request $request){
+    $id=$request->id;
+    $request->validate([
+      'cname'=>'required|min:3|max:20|unique:categories,name,'.$id,
+      'cdescription'=>'required',
+      ],
+      [
+        'cname.required'=>'Category Name is Required',
+        'cname.min'=>'Category Name must be more than 3 characters',
+        'cname.max'=>'Category Name must be less than 20 characters',
+        'cname.unique'=>'اسم کتگوری تکرار است',
+        'cdescription.required'=>'توضیجات کتگوری الزامی است',
+      ]);  
+
+      
+      $category=Category::find($id);
+      $category->name=$request->cname;
+      $category->description=$request->cdescription;
+      $category->save();
+
+      
+      return redirect('admin/categories');
+  }
 }

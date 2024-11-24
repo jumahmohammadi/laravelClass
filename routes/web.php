@@ -14,6 +14,8 @@ Route::prefix('admin')->middleware("admin")->group(function(){
     Route::get('/categories',[CategoryController::class,'index'])->name('categories');
     Route::get('/categories/add',[CategoryController::class,'add']);
     Route::post('/categories/save',[CategoryController::class,'saveCategory']);
+    Route::get('/categories/edit/{id}',[CategoryController::class,'edit']);
+    Route::put('/categories/update',[CategoryController::class,'update']);
 
   Route::controller(PostController::class)->group(function(){  
     Route::get('/posts','Posts')->name('posts');

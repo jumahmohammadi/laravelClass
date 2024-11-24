@@ -42,7 +42,9 @@
                                             <td>{{$counter++}}</td>
                                             <td>{{$ct->name}}</td>
                                             <td>{{$ct->description}}</td>
-                                            <td></td>
+                                            <td>
+                                                <a href="{{URL::to('admin/categories/edit/'.$ct->id)}}" class="btn btn-primary">Edit</a>
+                                            </td>
                                             
                                         </tr>
                                         @endforeach
