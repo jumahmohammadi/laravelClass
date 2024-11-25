@@ -7,11 +7,17 @@ use Illuminate\Http\Request;
 use App\Models\Category; 
 
 use Validator;
+use Session;
 
 class CategoryController extends Controller
 {
   function index(){
     $categories=Category::all();
+
+    // Session::put('username','Ahmad');
+    // echo Session::get('username');
+    // Session::pull('username');
+
     return view('admin.category.index',['category'=>$categories]);
   }
 
@@ -58,7 +64,13 @@ class CategoryController extends Controller
     $category->name=$request->cname;
     $category->description=$request->cdescription;
 
-    $category->save();
+    if($category->save()){
+       Session::flash('alert_message','Category Inserted Successfully');
+       Session::flash('alert_class','alert-success');
+    }else{
+       Session::flash('alert_message','Inert Faild!');
+       Session::flash('alert_class','alert-danger');
+    }
 
     return redirect('admin/categories');
     // return back();
@@ -88,9 +100,27 @@ class CategoryController extends Controller
       $category=Category::find($id);
       $category->name=$request->cname;
       $category->description=$request->cdescription;
-      $category->save();
+      if($category->save()){
+        Session::flash('alert_message','Category Updated Successfully');
+       Session::flash('alert_class','alert-success');
+      }else{
+        Session::flash('alert_message','Update Faild!');
+        Session::flash('alert_class','alert-danger');
+      }
 
       
       return redirect('admin/categories');
+  }
+
+  public function delete($category_id){
+    if(Category::destroy($category_id)){
+      Session::flash('alert_message','Category Deleted Successfully');
+       Session::flash('alert_class','alert-success');
+    }else{
+      Session::flash('alert_message','Delete Faild');
+      Session::flash('alert_class','alert-danger');
+    }
+
+    return redirect('admin/categories');
   }
 }
