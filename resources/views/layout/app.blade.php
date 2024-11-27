@@ -142,6 +142,15 @@
                                 <span class="hide-menu">Categories</span>
                             </a>
                         </li>
+						
+						 <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('tags')}}"
+                                aria-expanded="false">
+                                <i class="fa fa-tag" aria-hidden="true"></i>
+                                <span class="hide-menu">Tag</span>
+                            </a>
+                        </li>
+						
 
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/dashboard')}}"
