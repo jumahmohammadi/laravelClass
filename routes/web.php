@@ -24,6 +24,8 @@ Route::prefix('admin')->middleware("admin")->group(function(){
     Route::get('/tags/add',[TagController::class,'add']);
     Route::post('/tags/save',[TagController::class,'save']);
     Route::delete('/tags/delete/{id}',[TagController::class,'delete']);
+    Route::get('/tags/edit/{id}',[TagController::class,'edit']);
+    Route::put('/tags/update',[TagController::class,'update']);
 
 	
   Route::controller(PostController::class)->group(function(){  

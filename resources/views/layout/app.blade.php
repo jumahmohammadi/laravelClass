@@ -123,7 +123,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('dashbaord')}}"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">Dashboard</span>
+                                <span class="hide-menu">{{__('labels.dashboard')}}</span>
                             </a>
                         </li>
 
@@ -131,7 +131,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/posts')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-table" aria-hidden="true"></i>
-                                <span class="hide-menu">Posts</span>
+                                <span class="hide-menu">{{__('labels.posts')}}</span>
                             </a>
                         </li>
 
@@ -139,7 +139,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('categories')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-globe" aria-hidden="true"></i>
-                                <span class="hide-menu">Categories</span>
+                                <span class="hide-menu">{{__('labels.categories')}}</span>
                             </a>
                         </li>
 						
@@ -147,7 +147,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('tags')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-tag" aria-hidden="true"></i>
-                                <span class="hide-menu">Tag</span>
+                                <span class="hide-menu">{{__('labels.tags')}}</span>
                             </a>
                         </li>
 						
@@ -156,7 +156,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/dashboard')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
-                                <span class="hide-menu">Profile</span>
+                                <span class="hide-menu">{{__('labels.profile')}}</span>
                             </a>
                         </li>
 
@@ -165,7 +165,7 @@
                                 aria-expanded="false" onclick="this.submit()">
                                 @csrf
                                 <i class="fa fa-lock" aria-hidden="true"></i>
-                                <span class="hide-menu">LogOut</span>
+                                <span class="hide-menu">{{__('labels.logout')}}</span>
                             </form>
                         </li>
                      

@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+  <h1>{{__('labels.welcome_message')}}</h1>
    
    @if(!Auth::check()) 
     <a href="{{URL::to('login')}}">Login</a> <br>

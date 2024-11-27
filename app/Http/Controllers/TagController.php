@@ -47,7 +47,39 @@ class TagController extends Controller
     return redirect('admin/tags');
   }
 
+  public function edit($tag_id){
+     $tag=Tag::find($tag_id);
+     return view('admin.tag.edit',['edit_tag'=>$tag]);
+  }
  
+
+  public function update(Request $request){
+    $id=$request->id; 
+
+    $request->validate([
+      'tag_name'=>'required|min:3|unique:tags,name,'.$id,
+      ],
+      [
+        'tag_name.required'=>'نام تگ الزامی است',
+        'tag_name.min'=>'نام تگ باید حداقل 3 حرف باشد',
+        'tag_name.unique'=>'اسم تگ  تکرار است',
+      ]); 
+
+      $tag=Tag::find($id);
+      $tag->name=$request->tag_name;
+
+       if($tag->save()){
+        Session::flash('alert_message','Tag Updated Successfully');
+        Session::flash('alert_class','alert-success');
+       }else{
+        Session::flash('alert_message','Update Faild!');
+        Session::flash('alert_class','alert-danger');
+       }
+
+       return redirect('admin/tags');
+  }
+
+
   public function delete($tag_id){
     if(Tag::destroy($tag_id)){
       Session::flash('alert_message','Tag Deleted Successfully');
