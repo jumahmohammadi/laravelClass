@@ -20,7 +20,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <div class="d-flex justify-content-between mb-4">
-                                <h3 class="box-title">Category List </h3>
+                                <h3 class="box-title">{{__('labels.category_list')}} </h3>
                                 <a href="{{URL::to('admin/categories/add')}}" class="btn btn-outline-primary">New Category</a>
                             </div>
                              

@@ -78,6 +78,10 @@
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
                     <!-- ============================================================== -->
+                     <ul class="d-flex">
+                        <li class="ms-3"><a href="{{URL::to('change_language/en')}}" >English</a></li>
+                        <li class="ms-3"><a href="{{URL::to('change_language/fa')}}">فارسی</a></li>
+                     </ul>
                     <ul class="navbar-nav ms-auto d-flex align-items-center">
 
                         <!-- ============================================================== -->

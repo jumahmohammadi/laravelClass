@@ -18,6 +18,7 @@ class CategoryController extends Controller
     // echo Session::get('username');
     // Session::pull('username');
 
+    
     return view('admin.category.index',['category'=>$categories]);
   }
 
@@ -65,7 +66,7 @@ class CategoryController extends Controller
     $category->description=$request->cdescription;
 
     if($category->save()){
-       Session::flash('alert_message','Category Inserted Successfully');
+       Session::flash('alert_message',__('labels.category_inserted_successfully'));
        Session::flash('alert_class','alert-success');
     }else{
        Session::flash('alert_message','Inert Faild!');
