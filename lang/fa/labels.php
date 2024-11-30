@@ -9,6 +9,7 @@
 	 'logout'=>'خارج شدن',
 	 'category_list'=>'لیست دسته ها',
 	 'category_inserted_successfully'=>'دسته موفقانه ایجاد شد',
+	 'sliders'=>'سلایدر'
   ];
 
 ?>

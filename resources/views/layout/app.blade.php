@@ -21,6 +21,22 @@
     <link href="{{asset('/css/fontawesome-all.min.css')}}" rel="stylesheet">
     <link href="{{asset('/css/themify-icons.css')}}" rel="stylesheet">
     <link href="{{asset('/css/style.min.css')}}" rel="stylesheet">
+    @if(App::getlocale()=="fa")
+      <style>
+          body{
+            direction:rtl; 
+          }
+          *{
+            text-align:right;
+          }
+          #main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper{
+            margin-right: 240px !important;
+            margin-left:0;
+          }
+      </style>
+    @endif
+
+
 	@yield('internal_css')
 </head>
 
@@ -127,7 +143,7 @@
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{Route('dashbaord')}}"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
-                                <span class="hide-menu">{{__('labels.dashboard')}}</span>
+                                <span class="hide-menu">{{__('labels.dashboard')}} </span>
                             </a>
                         </li>
 
@@ -152,6 +168,14 @@
                                 aria-expanded="false">
                                 <i class="fa fa-tag" aria-hidden="true"></i>
                                 <span class="hide-menu">{{__('labels.tags')}}</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/sliders')}}"
+                                aria-expanded="false">
+                                <i class="fa fa-image" aria-hidden="true"></i>
+                                <span class="hide-menu">{{__('labels.sliders')}}</span>
                             </a>
                         </li>
 						

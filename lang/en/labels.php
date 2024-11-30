@@ -9,6 +9,7 @@
 	 'logout'=>'Logout',
 	 'category_list'=>'Category List',
 	 'category_inserted_successfully'=>'Category Inserted Successfully',
+	 'sliders'=>'Sliders',
   ];
 
 ?>

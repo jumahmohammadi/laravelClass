@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Slider; 
+use Session;
 
 class SliderController extends Controller
 {
@@ -11,7 +13,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        //
+        $sliders=Slider::all();
+        return view('admin.slider.index',['sliders'=>$sliders]);
     }
 
     /**
@@ -19,7 +22,8 @@ class SliderController extends Controller
      */
     public function create()
     {
-        //
+       
+        return view('admin.slider.add');
     }
 
     /**
@@ -27,7 +31,29 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=>'required|min:10',
+            'detail'=>'required',
+            'photo'=>'required|min:50|max:1000|mimes:jpg,png'
+        ]);
+
+        $photo_address=$request->file('photo')->store('sliders');
+        
+        
+        $slider = new Slider();
+        $slider->title=$request->title;
+        $slider->detail=$request->detail;
+        $slider->photo=$photo_address; 
+
+        if($slider->save()){
+            Session::flash('alert_message','Slider inserted Successfully');
+            Session::flash('alert_class','alert-success');
+        }else{
+            Session::flash('alert_message','Inert Faild!');
+            Session::flash('alert_class','alert-danger');
+        }
+        return redirect('admin/sliders');
+        
     }
 
     /**
@@ -43,7 +69,7 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.slider.edit');
     }
 
     /**
