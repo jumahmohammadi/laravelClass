@@ -34,7 +34,7 @@ class SliderController extends Controller
         $request->validate([
             'title'=>'required|min:10',
             'detail'=>'required',
-            'photo'=>'required|min:50|max:1000|mimes:jpg,png'
+            'photo'=>'required|min:50|max:1024|mimes:jpg,png,jpeg'
         ]);
 
         $photo_address=$request->file('photo')->store('sliders');
@@ -69,7 +69,8 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.slider.edit');
+        $slider=Slider::find($id);
+        return view('admin.slider.edit',['slider'=>$slider]);
     }
 
     /**
@@ -77,7 +78,38 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title'=>'required|min:10',
+            'detail'=>'required',
+            'photo'=>'min:50|max:1024|mimes:jpg,png,jpeg'
+        ]);
+
+        $slider=Slider::find($id);
+
+        $slider->title=$request->title; 
+        $slider->detail=$request->detail; 
+        
+        if($request->photo){
+           $old_photo_address=public_path().'/uploads/'. $slider->photo;
+           if(file_exists($old_photo_address)){
+            unlink($old_photo_address);
+           } 
+
+           $photo_address=$request->file('photo')->store('sliders');
+           $slider->photo=$photo_address;
+
+
+        } 
+
+        if($slider->save()){
+            Session::flash('alert_message','Slider Updated Successfully');
+            Session::flash('alert_class','alert-success');
+        }else{
+            Session::flash('alert_message','Update Faild!');
+            Session::flash('alert_class','alert-danger');
+        }
+        return redirect('admin/sliders');
+
     }
 
     /**
@@ -85,6 +117,19 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $slider=Slider::find($id);
+        $old_photo_address = public_path().'/uploads/'.$slider->photo; 
+        if(file_exists($old_photo_address)){
+            unlink($old_photo_address);
+           } 
+        
+        if(Slider::destroy($id)){
+            Session::flash('alert_message','Slider Deleted Successfully');
+            Session::flash('alert_class','alert-success');
+        }else{
+            Session::flash('alert_message','Delete Faild!');
+            Session::flash('alert_class','alert-danger');
+        }
+        return redirect('admin/sliders');
     }
 }

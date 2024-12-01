@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('breadcrumb')
-<x-breadcrumb pageTitle="Edit Tag">
+<x-breadcrumb pageTitle="Edit Slide">
     <x-slot name="links">
-        / <li>Tags</li>
-        / <li>Edit tag</li>
+        / <li>Sliders</li>
+        / <li>Edit Slide</li>
     </x-slot>
 </x-breadcrumb>
 @endsection
@@ -13,20 +13,37 @@
     <div class="col-sm-12">
         <div class="white-box">
             <div class="d-flex justify-content-between mb-4">
-                <h3 class="box-title">Edit Tag</h3>
+                <h3 class="box-title">Edit Slide</h3>
             </div>
             <div>
-                <form action="{{URL::to('admin/tags/update')}}" method="post">
+                <form action="{{URL::to('admin/sliders/'.$slider->id)}}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="mb-3">
-                        <label for="tag_name">Name</label>
-                        <input type="text" name="tag_name" id="tag_name" class="form-control" value="{{$edit_tag->name}}">
-                        <input type="hidden" name="id" value="{{$edit_tag->id}}">
-                        @if($errors->has('tag_name'))
-                            <span class="text-danger">{{$errors->first('tag_name')}}</span>
+                        <label for="title">Title</label>
+                        <input type="text" name="title" id="title" class="form-control" value="{{$slider->title}}">
+                  
+                        @if($errors->has('title'))
+                            <span class="text-danger">{{$errors->first('title')}}</span>
                         @endif
                     </div>
+
+                    <div class="mb-3">
+                        <label for="detail">Detail</label>
+                        <textarea  name="detail" id="detail" class="form-control">{{$slider->detail}}</textarea>
+                        @if($errors->has('detail'))
+                            <span class="text-danger">{{$errors->first('detail')}}</span>
+                        @endif
+                    </div>
+					 <div class="mb-3">
+                        <label for="photo">Photo</label> <img src="{{asset('/uploads/'.$slider->photo)}}" alt="" style="width:50px">
+                        <input type="file" name="photo" id="photo" class="form-control" >
+                        @if($errors->has('photo'))
+                            <span class="text-danger">{{$errors->first('photo')}}</span>
+                        @endif
+                    </div>
+
+
                     
                     <div class="mb-3">
                         <button class="btn btn-primary btn-lg">Update</button>

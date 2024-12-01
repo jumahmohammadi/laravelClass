@@ -12,7 +12,12 @@ use Session;
 class TagController extends Controller
 {
   function index(){
-    $tags=Tag::all();
+    // $tags=Tag::all();
+    // $tags=Tag::OrderBy('name','DESC')->get();
+    // $tags=Tag::OrderBy('name','ASC')->get();
+    // $tags=Tag::OrderBy('id','DESC')->limit(3)->get();
+    // $tags=Tag::OrderBy('id','DESC')->limit(3)->offset(1)->get();
+    $tags=Tag::OrderBy('id','DESC')->paginate(3);
 
     return view('admin.tag.index',['tags'=>$tags]);
   }

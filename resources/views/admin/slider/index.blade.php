@@ -48,8 +48,8 @@
                                             <td>{{$slide->title}}</td>
                                             <td>{{$slide->detail}}</td>
                                             <td>
-                                                <a href="{{URL::to('admin/tags/edit/'.$slide->id)}}" class="btn btn-primary">Edit</a>
-                                                <form class="d-inline" action="{{URL::to('admin/tags/delete/'.$slide->id)}}" method="post">
+                                                <a href="{{URL::to('admin/sliders/'.$slide->id.'/edit')}}" class="btn btn-primary">Edit</a>
+                                                <form class="d-inline" action="{{URL::to('admin/sliders/'.$slide->id)}}" method="post">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class="btn btn-danger" onclick="return confirm('Are you sure to delete this?'); ">Delete</button>

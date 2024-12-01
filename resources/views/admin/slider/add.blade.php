@@ -19,7 +19,7 @@
                 <form action="{{route('sliders.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
-                        <label for="title">Name</label>
+                        <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}">
                         @if($errors->has('title'))
                             <span class="text-danger">{{$errors->first('title')}}</span>
