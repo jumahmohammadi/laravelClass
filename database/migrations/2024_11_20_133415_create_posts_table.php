@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->integer('category_id');
             $table->date('date');
+            $table->integer('author_id');
             $table->timestamps();
         });
     }

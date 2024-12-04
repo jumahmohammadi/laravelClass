@@ -14,6 +14,9 @@ class CategoryController extends Controller
   function index(){
     $categories=Category::all();
 
+    // $singleCategory=Category::find(5);
+    //dd($singleCategory->posts);
+
     // Session::put('username','Ahmad');
     // echo Session::get('username');
     // Session::pull('username');

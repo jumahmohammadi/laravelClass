@@ -181,7 +181,7 @@
 						
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/dashboard')}}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{URL::to('admin/profile')}}"
                                 aria-expanded="false">
                                 <i class="fa fa-user" aria-hidden="true"></i>
                                 <span class="hide-menu">{{__('labels.profile')}}</span>

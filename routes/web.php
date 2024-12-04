@@ -39,7 +39,8 @@ Route::middleware('lang')->group(function(){
       });
 
 
-        Route::get('/users',function(){echo "user page";});
+        Route::get('/profile',[UserController::class,'profile']);
+        Route::post('/profile/save',[UserController::class,'profileSave']);
 });
 
 
