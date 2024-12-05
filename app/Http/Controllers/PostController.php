@@ -11,9 +11,11 @@ class PostController extends Controller
 
     function Posts(){
         $allPosts=Post::all();
-       // $allPosts=Post::find(1);
+       //$allPosts=Post::find(1);
 	   //$post_author=$allPosts->author;
 	   //$post_category=$allPosts->category;
+	   //$post_category=$allPosts->tags;
+	   
        return view('admin.posts.index',['page_title'=>'All Posts','posts'=>$allPosts]);
     }
 

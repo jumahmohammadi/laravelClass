@@ -14,4 +14,9 @@ class Post extends Model
 	function author(){
 		return $this->belongsTo(User::class);
 	}
+	
+	function tags(){
+		return $this->belongsToMany(Tag::class);
+	}
+	
 }

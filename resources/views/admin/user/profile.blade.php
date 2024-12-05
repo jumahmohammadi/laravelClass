@@ -9,6 +9,10 @@
 @endsection
 
 @section('mainContent')
+@if(Session::has('alert_message'))
+<x-message text="{{Session::get('alert_message')}}" cls="{{Session::get('alert_class')}}"></x-message>
+@endif
+
 <div class="row">
     <div class="col-sm-12">
         <div class="white-box">

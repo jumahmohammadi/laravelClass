@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth; 
 use Hash; 
+use Session;
+
+use App\Models\User; 
 
 class UserController extends Controller
 {
@@ -15,6 +18,44 @@ class UserController extends Controller
 	}
 	
 	public function profileSave(Request $request){
+		$request->validate([
+			'name'=>'required|min:3',
+			'last_name'=>'required|min:3',
+			'email'=>'required|email',
+			'photo'=>'max:1024|mimes:jpg,jpeg,png',
+			'current_password'=>'nullable|min:5|current_password',
+			'password'=>'nullable|min:5',
+			'password_confirmation'=>'nullable|min:5|same:password',
+		]);
+
+		$user_id=Auth::user()->id; 
+		$user=User::find($user_id);
+
+		$user->name=$request->name;
+		$user->last_name=$request->last_name;
+		$user->email=$request->email;
 		
+		if($request->password){
+			$user->password=Hash::make($request->password);
+		}
+		if($request->photo){
+			$old_photo_address=public_path().'/uploads/'.$user->photo;
+            if(file_exists($old_photo_address)){
+               unlink($old_photo_address);
+			}
+
+			$photo_address=$request->file('photo')->store('users');
+			$user->photo=$photo_address;
+		}
+
+		if($user->save()){
+			Session::flash('alert_message','Profile Update Successfully');
+			Session::flash('alert_class','alert-success');
+		}else{
+			Session::flash('alert_message','Update Faild!');
+			Session::flash('alert_class','alert-danger');
+		}
+
+		return redirect('admin/profile');
 	}
 }
