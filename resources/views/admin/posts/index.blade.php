@@ -10,29 +10,64 @@
 
 
 @section('mainContent')
-<x-message text="Post updated successfully" cls="alert-danger"></x-message>	
-<div>
-    <h1> {{$page_title}}</h1>
-	<table border="1">
-  <tr>
-    <th>ID</th>
-    <th>title</th>
-    <th>Content</th>
-    <th>operation</th>
-  </tr>
-  
-  @php $counter=1; @endphp
-  
-  
-  @foreach($posts as $post)
-  <tr>
-    <td> {{$counter++}}</td>
-    <td>{{$post->title}}</td>
-    <td>{{$post->content}}</td>
-    <td><button>Delete</button>/<button>Edit</button></td>
-  </tr>
-  @endforeach
-  
-</table>
-</div>
+@if(Session::has('alert_message'))
+<x-message text="{{Session::get('alert_message')}}" cls="{{Session::get('alert_class')}}"></x-message>
+@endif
+<div class="row">
+                    <div class="col-sm-12">
+                        <div class="white-box">
+                            <div class="d-flex justify-content-between mb-4">
+                                <h3 class="box-title">All Posts </h3>
+                                <a href="{{URL::to('admin/posts/add')}}" class="btn btn-outline-primary">New Post</a>
+                            </div>
+                             
+                            <div class="table-responsive">
+                                <table class="table text-nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th class="border-top-0">#</th>
+                                            <th class="border-top-0">Title</th>
+                                            <th class="border-top-0">Photo</th>
+                                            <th class="border-top-0">Date</th>
+                                            <th class="border-top-0">Category</th>
+                                            <th class="border-top-0">Actions</th>
+                                          
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php 
+                                             $counter=1; 
+                                        @endphp
+                                        @foreach ($posts as $post)
+
+                                        <tr>
+                                            <td>{{$counter++}}</td>
+                                            <td>{{$post->title}}</td>
+                                            <td>{{$post->photo}}</td>
+                                            <td>{{$post->date}}</td>
+                                            <td>{{$post->category_id}}</td>
+                                            <td>
+                                                <a href="{{URL::to('admin/categories/edit/'.$post->id)}}" class="btn btn-primary">Edit</a>
+                                                <form class="d-inline" action="{{URL::to('admin/categories/delete/'.$post->id)}}" method="post">
+                                                    @method('DELETE')
+                                                    @csrf
+                                                    <button class="btn btn-danger" onclick="return confirm('Are you sure to delete this?'); ">Delete</button>
+                                                </form>
+                                            </td>
+                                            
+                                        </tr>
+                                        @endforeach
+                                           
+                                      
+                                    </tbody>
+                                </table>
+
+                                {{$posts->links('pagination::bootstrap-5')}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+
 @endSection

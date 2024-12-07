@@ -32,8 +32,8 @@ Route::middleware('lang')->group(function(){
         Route::resource('sliders',SliderController::class);
 
       Route::controller(PostController::class)->group(function(){  
-        Route::get('/posts','Posts')->name('posts');
-        Route::get('/add_post','AddPost');
+        Route::get('/posts','index')->name('posts');
+        Route::get('/posts/add','add');
         Route::get('/edit_post','EditPost');
         Route::get('/delete_post','DeletePost');
       });
