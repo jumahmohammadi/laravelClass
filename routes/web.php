@@ -34,8 +34,9 @@ Route::middleware('lang')->group(function(){
       Route::controller(PostController::class)->group(function(){  
         Route::get('/posts','index')->name('posts');
         Route::get('/posts/add','add');
-        Route::get('/edit_post','EditPost');
-        Route::get('/delete_post','DeletePost');
+        Route::post('/posts/save','save');
+        Route::get('/posts/edit/{id}','edit');
+        Route::delete('/posts/delete/{id}','delete');
       });
 
 

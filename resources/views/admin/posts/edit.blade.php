@@ -1,9 +1,9 @@
 @extends('layout.app')
 @section('breadcrumb')
-<x-breadcrumb pageTitle="Add Tag">
+<x-breadcrumb pageTitle="Edit Tag">
     <x-slot name="links">
         / <li>Tags</li>
-        / <li>Add Post</li>
+        / <li>Edit Post</li>
     </x-slot>
 </x-breadcrumb>
 @endsection
@@ -13,14 +13,14 @@
     <div class="col-sm-12">
         <div class="white-box">
             <div class="d-flex justify-content-between mb-4">
-                <h3 class="box-title">Add Post</h3>
+                <h3 class="box-title">Edit Post</h3>
             </div>
             <div>
                 <form action="{{URL::to('admin/posts/save')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="title">Title</label>
-                        <input type="text" name="title" id="title" class="form-control" value="{{old('title')}}">
+                        <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
                         @if($errors->has('title'))
                             <span class="text-danger">{{$errors->first('title')}}</span>
                         @endif
@@ -28,18 +28,19 @@
                     <div class="row mb-3">
                        <div class="col-md-6">
                         <label for="date">Date</label>
-                            <input type="text" name="date" id="date" class="form-control input_date"  autocomplete="off" value="{{date('Y-m-d')}}">
+                            <input type="text" name="date" id="date" class="form-control input_date"  autocomplete="off" value="{{$post->date}}">
                             @if($errors->has('date'))
                                 <span class="text-danger">{{$errors->first('date')}}</span>
                             @endif
                        </div>
 
                        <div class="col-md-6">
-                        <label for="photo">Photo</label>
-                            <input type="file" name="photo" id="photo" class="form-control" value="{{old('photo')}}">
+                        <label for="photo">Photo</label> 
+                            <input type="file" name="photo" id="photo" class="form-control" >
                             @if($errors->has('photo'))
                                 <span class="text-danger">{{$errors->first('photo')}}</span>
                             @endif
+                            <img src="{{asset('uploads/'.$post->photo)}}" style="width:70px" alt="">
                        </div>
                     </div>
 
@@ -49,7 +50,7 @@
                             <select  name="category" id="category" class="form-select select2_dropdown">
                               <option value="">---</option> 
                               @foreach($categories as $category)
-                                     <option value="{{$category->id}}">{{$category->name}}</option>   
+                                     <option value="{{$category->id}}" @if($category->id==$post->category_id)  selected @endif>{{$category->name}}</option>   
                                  @endforeach
                            </select>    
                             @if($errors->has('category'))
@@ -72,14 +73,14 @@
 
                     <div class="mb-3">
                             <label for="detail">Detail</label>
-                            <textarea name="detail" id="detail" class="form-control rich_text_editor" rows="15">{{old('detail')}}</textarea>
+                            <textarea name="detail" id="detail" class="form-control rich_text_editor" rows="15">{{$post->detail}}</textarea>
                             @if($errors->has('detail'))
                                 <span class="text-danger">{{$errors->first('detail')}}</span>
                             @endif
                     </div>
                     
                     <div class="mb-3">
-                        <button class="btn btn-primary btn-lg">Save</button>
+                        <button class="btn btn-primary btn-lg">Update</button>
                     </div>
                 </form>
             </div>

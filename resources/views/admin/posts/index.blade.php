@@ -30,6 +30,7 @@
                                             <th class="border-top-0">Photo</th>
                                             <th class="border-top-0">Date</th>
                                             <th class="border-top-0">Category</th>
+                                            <th class="border-top-0">Author</th>
                                             <th class="border-top-0">Actions</th>
                                           
                                         </tr>
@@ -43,12 +44,13 @@
                                         <tr>
                                             <td>{{$counter++}}</td>
                                             <td>{{$post->title}}</td>
-                                            <td>{{$post->photo}}</td>
+                                            <td><img src="{{asset('uploads/'.$post->photo)}}" alt="" style="width:150px"></td>
                                             <td>{{$post->date}}</td>
-                                            <td>{{$post->category_id}}</td>
+                                            <td>{{$post->categoryName}}</td>
+                                            <td>{{$post->authorName}} {{$post->authorLastName}}</td>
                                             <td>
-                                                <a href="{{URL::to('admin/categories/edit/'.$post->id)}}" class="btn btn-primary">Edit</a>
-                                                <form class="d-inline" action="{{URL::to('admin/categories/delete/'.$post->id)}}" method="post">
+                                                <a href="{{URL::to('admin/posts/edit/'.$post->id)}}" class="btn btn-primary">Edit</a>
+                                                <form class="d-inline" action="{{URL::to('admin/posts/delete/'.$post->id)}}" method="post">
                                                     @method('DELETE')
                                                     @csrf
                                                     <button class="btn btn-danger" onclick="return confirm('Are you sure to delete this?'); ">Delete</button>
