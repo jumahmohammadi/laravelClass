@@ -36,6 +36,7 @@ Route::middleware('lang')->group(function(){
         Route::get('/posts/add','add');
         Route::post('/posts/save','save');
         Route::get('/posts/edit/{id}','edit');
+        Route::put('/posts/update/{id}','update');
         Route::delete('/posts/delete/{id}','delete');
       });
 

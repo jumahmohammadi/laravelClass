@@ -16,11 +16,13 @@
                 <h3 class="box-title">Edit Post</h3>
             </div>
             <div>
-                <form action="{{URL::to('admin/posts/save')}}" method="post" enctype="multipart/form-data">
+                <form action="{{URL::to('admin/posts/update/'.$post->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control" value="{{$post->title}}">
+                      
                         @if($errors->has('title'))
                             <span class="text-danger">{{$errors->first('title')}}</span>
                         @endif
@@ -49,7 +51,7 @@
                         <label for="category">Category</label>
                             <select  name="category" id="category" class="form-select select2_dropdown">
                               <option value="">---</option> 
-                              @foreach($categories as $category)
+                                @foreach($categories as $category)
                                      <option value="{{$category->id}}" @if($category->id==$post->category_id)  selected @endif>{{$category->name}}</option>   
                                  @endforeach
                            </select>    
@@ -62,7 +64,18 @@
                         <label for="tags">Tags</label>
                             <select type="file" name="tags[]" id="tags" class="form-select select2_dropdown" multiple>
                                  @foreach($tags as $tag)
-                                     <option value="{{$tag->id}}">{{$tag->name}}</option>   
+                                   
+                                   <?php 
+                                    $selected=false;
+                                    foreach($post->tags as $post_tag):
+                                       if($post_tag->id==$tag->id){
+                                          $selected=true; 
+                                       }   
+                                    endforeach; 
+                                    ?>
+
+                                     <option value="{{$tag->id}}" @if($selected) selected @endif>{{$tag->name}}</option>   
+                                 
                                  @endforeach
                             </select>  
                             @if($errors->has('tags'))

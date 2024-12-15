@@ -19,6 +19,7 @@ class TagController extends Controller
     // $tags=Tag::OrderBy('id','DESC')->limit(3)->offset(1)->get();
     $tags=Tag::OrderBy('id','DESC')->paginate(10);
 
+
     return view('admin.tag.index',['tags'=>$tags]);
   }
 

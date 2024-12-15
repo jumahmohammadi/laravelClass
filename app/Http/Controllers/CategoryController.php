@@ -12,7 +12,7 @@ use Session;
 class CategoryController extends Controller
 {
   function index(){
-    $categories=Category::all();
+    $categories=Category::get();
 
     // $singleCategory=Category::find(5);
     //dd($singleCategory->posts);
