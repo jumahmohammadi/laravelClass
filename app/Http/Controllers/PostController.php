@@ -5,27 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post; 
 use App\Models\Category; 
+use App\Models\User; 
 use App\Models\Tag; 
 use Auth; 
 use Session;
-use DB;
+
 class PostController extends Controller
 {
    
 
-    function index(){
+    function index(Request $request){
         // $posts=Post::paginate(10);
        //$allPosts=Post::find(1);
 	   //$post_author=$allPosts->author;
 	   //$post_category=$allPosts->category;
 	   //$post_category=$allPosts->tags;
 	  
-       $posts=DB::table('posts as p')
-              ->leftjoin('categories as c','c.id','p.category_id')
-              ->leftjoin('users as u','u.id','p.author_id')
-              ->select('p.*','u.name as authorName','u.last_name as authorLastName','c.name as categoryName')->orderBy('id','DESC')->paginate();
+    //  $post=new Post();
+    //  $posts=$post->getAllPost();   
+  
+      $title=$request->title;
+      $date=$request->date;
+      $category=$request->category;
+      $user=$request->user;
 
-       return view('admin.posts.index',['posts'=>$posts]);
+       $categories=Category::all();
+       $users=User::all();
+       $posts=Post::getAllPost($title,$date,$category,$user);
+       return view('admin.posts.index',['posts'=>$posts,'users'=>$users,'categories'=>$categories]);
     }
 
     function add(){
@@ -72,9 +79,7 @@ class PostController extends Controller
      $post=Post::find($id);
      $categories=Category::all();
      $tags=Tag::all();
-    //  foreach( $post->tags as $tag){
-    //   echo $tag->id.' - ';
-    //  }
+    // dd($post->tags);
     
      return view('admin.posts.edit',['categories'=>$categories,'tags'=>$tags,'post'=>$post]);
    }

@@ -67,6 +67,7 @@
                                    
                                    <?php 
                                     $selected=false;
+                                  
                                     foreach($post->tags as $post_tag):
                                        if($post_tag->id==$tag->id){
                                           $selected=true; 
