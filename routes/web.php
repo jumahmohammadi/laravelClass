@@ -46,7 +46,9 @@ Route::middleware('lang')->group(function () {
 
     Route::get('/profile', [UserController::class, 'profile']);
     Route::post('/profile/save', [UserController::class, 'profileSave']);
+
     Route::get('/setting', [SettingController::class, 'index']);
+    Route::put('/setting/save', [SettingController::class, 'save']);
   });
 
 

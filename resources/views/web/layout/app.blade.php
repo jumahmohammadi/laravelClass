@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
+	<?php $websiteSetting=setting();?>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Katen - Minimal Blog & Magazine HTML Theme</title>
+	<title>{{$websiteSetting->title}}</title>
 	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
+	<link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/'.$websiteSetting->logo)}}">
 
 	<!-- STYLES -->
 	<link rel="stylesheet" href="{{asset('website/css/bootstrap.min.css')}}" type="text/css" media="all">
@@ -64,13 +65,13 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-xl">
 				<!-- site logo -->
-				<a class="navbar-brand" href="index.html"><img src="images/logo.svg" alt="logo" /></a> 
+				<a class="navbar-brand" href="/"><img src="{{asset('uploads/'.$websiteSetting->logo)}}" alt="logo" /></a> 
 
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item  active">
-							<a class="nav-link" href="index.html">Home</a>
+							<a class="nav-link" href="index.html">Home  </a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="category.html">Lifestyle</a>
@@ -97,14 +98,7 @@
 				<!-- header right section -->
 				<div class="header-right">
 					<!-- social icons -->
-					<ul class="social-icons list-unstyled list-inline mb-0">
-						<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-						<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-					</ul>
+				       <x-social_media></x-social_media>
 					<!-- header buttons -->
 					<div class="header-buttons">
 						<button class="search icon-button">
@@ -142,14 +136,7 @@
 
 					<!-- social icons -->
 					<div class="col-md-4 text-center">
-						<ul class="social-icons list-unstyled list-inline mb-0">
-							<li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-pinterest"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-medium"></i></a></li>
-							<li class="list-inline-item"><a href="#"><i class="fab fa-youtube"></i></a></li>
-						</ul>
+					    <x-social_media></x-social_media>
 					</div>
 
 					<!-- go to top button -->

@@ -20,12 +20,15 @@
                 <h3 class="box-title">Setting</h3>
             </div>
             <div>
-                <form action="{{URL::to('admin/profile/save')}}" method="post" enctype="multipart/form-data">
+                <form action="{{URL::to('admin/setting/save')}}" method="post" enctype="multipart/form-data">
                     @csrf
+                    @method('put')
                     <div class="mb-3">
                         <label for="title">Title</label>
                         <input type="text" name="title" id="title" class="form-control"
                             value="{{isset($setting->title) ? $setting->title : ''}}">
+                            <input type="hidden" name="id" id="id" class="form-control"
+                            value="{{isset($setting->id) ? $setting->id : ''}}">
                         @if($errors->has('title'))
                         <span class="text-danger">{{$errors->first('title')}}</span>
                         @endif
