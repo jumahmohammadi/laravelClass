@@ -33,6 +33,10 @@
                     @endif
                     </div>
                     <div class="mb-3">
+                        <label for="show_in_menu">Show In Menu?</label>
+                        <input type="checkbox" name="show_in_menu" id="show_in_menu" class="">
+                    </div>
+                    <div class="mb-3">
                         <button class="btn btn-primary btn-lg">Save</button>
                     </div>
                 </form>

@@ -64,9 +64,11 @@ class CategoryController extends Controller
       'cdescription.required'=>'توضیجات کتگوری الزامی است',
     ]); 
 
+    
     $category=new Category();
     $category->name=$request->cname;
     $category->description=$request->cdescription;
+    $category->show_in_menu=$request->show_in_menu?1:0;
 
     if($category->save()){
        Session::flash('alert_message',__('labels.category_inserted_successfully'));
@@ -104,6 +106,8 @@ class CategoryController extends Controller
       $category=Category::find($id);
       $category->name=$request->cname;
       $category->description=$request->cdescription;
+      $category->show_in_menu=$request->show_in_menu?1:0;
+
       if($category->save()){
         Session::flash('alert_message','Category Updated Successfully');
        Session::flash('alert_class','alert-success');

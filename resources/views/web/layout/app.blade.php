@@ -65,32 +65,22 @@
 		<nav class="navbar navbar-expand-lg">
 			<div class="container-xl">
 				<!-- site logo -->
-				<a class="navbar-brand" href="/"><img src="{{asset('uploads/'.$websiteSetting->logo)}}" alt="logo" /></a> 
+				<a class="navbar-brand" href="{{URL::to('/')}}"><img src="{{asset('uploads/'.$websiteSetting->logo)}}" alt="logo" /></a> 
 
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item  active">
-							<a class="nav-link" href="index.html">Home  </a>
+							<a class="nav-link" href="{{URL::to('/')}}">Home  </a>
 						</li>
+						@foreach(getMenuCategories() as $category)
 						<li class="nav-item">
-							<a class="nav-link" href="category.html">Lifestyle</a>
+							<a class="nav-link" href="{{URL::to('/category/'.$category->name)}}">{{$category->name}}</a>
 						</li>
+						@endforeach
+						
 						<li class="nav-item">
-							<a class="nav-link" href="category.html">Inspiration</a>
-						</li>
-						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle" href="#">Pages</a>
-							<ul class="dropdown-menu">
-								<li><a class="dropdown-item" href="category.html">Category</a></li>
-								<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-								<li><a class="dropdown-item" href="blog-single-alt.html">Blog Single Alt</a></li>
-								<li><a class="dropdown-item" href="about.html">About</a></li>
-								<li><a class="dropdown-item" href="contact.html">Contact</a></li>
-							</ul>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="contact.html">Contact</a>
+							<a class="nav-link" href="{{URL::to('/contact')}}">Contact</a>
 						</li>
 					</ul>
 				</div>

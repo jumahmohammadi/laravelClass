@@ -2,7 +2,7 @@
 <div class="sidebar">
 						<!-- widget about -->
 						<div class="widget rounded">
-							<div class="widget-about data-bg-image text-center" data-bg-image="images/map-bg.png">
+							<div class="widget-about data-bg-image text-center" data-bg-image="{{asset('website/images/map-bg.png')}}">
 								<img src="{{asset('uploads/'.$websiteSetting->logo)}}" alt="logo" class="mb-4" />
 								<p class="mb-4">
 									{{$websiteSetting->detail}}
@@ -15,7 +15,7 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Popular Posts</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<!-- post -->
@@ -76,16 +76,13 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Explore Topics</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<ul class="list">
-									<li><a href="#">Lifestyle</a><span>(5)</span></li>
-									<li><a href="#">Inspiration</a><span>(2)</span></li>
-									<li><a href="#">Fashion</a><span>(4)</span></li>
-									<li><a href="#">Politic</a><span>(1)</span></li>
-									<li><a href="#">Trending</a><span>(7)</span></li>
-									<li><a href="#">Culture</a><span>(3)</span></li>
+									@foreach(getAllCategoriesWithPostCount() as $cateogory)
+									<li><a href="{{URL::to('/category/'.$cateogory->name)}}">{{$cateogory->name}}</a><span>({{$cateogory->posts_count}})</span></li>
+								    @endforeach 
 								</ul>
 							</div>
 							
@@ -95,7 +92,7 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Newsletter</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<span class="newsletter-headline text-center mb-3">Join 70,000 subscribers!</span>
@@ -113,7 +110,7 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Celebration</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<div class="post-carousel-widget">
@@ -186,7 +183,7 @@
 						<div class="widget rounded">
 							<div class="widget-header text-center">
 								<h3 class="widget-title">Tag Clouds</h3>
-								<img src="images/wave.svg" class="wave" alt="wave" />
+								<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 							</div>
 							<div class="widget-content">
 								<a href="#" class="tag">#Trending</a>

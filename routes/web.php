@@ -8,11 +8,10 @@ use App\Http\Controllers\TagController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\WebController;
 
 Route::middleware('lang')->group(function () {
-  Route::get('/', function () {
-    return view('web.home');
-  });
+  Route::get('/', [WebController::class,'home']);
   Route::get('/change_language/{language}', [DashboardController::class, 'changeLanguage']);
   // Route::middleware('auth')->group(function(){
   Route::prefix('admin')->middleware("admin")->group(function () {

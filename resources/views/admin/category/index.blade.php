@@ -31,6 +31,7 @@
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">Category</th>
                                             <th class="border-top-0">Description</th>
+                                            <th class="border-top-0">Show in Menu</th>
                                             <th class="border-top-0">Actions</th>
                                           
                                         </tr>
@@ -45,6 +46,9 @@
                                             <td>{{$counter++}}</td>
                                             <td>{{$ct->name}}</td>
                                             <td>{{$ct->description}}</td>
+                                            <td>
+                                                <input type="checkbox" @if($ct->show_in_menu) checked @endif disabled>
+                                            </td>
                                             <td>
                                                 <a href="{{URL::to('admin/categories/edit/'.$ct->id)}}" class="btn btn-primary">Edit</a>
                                                 <form class="d-inline" action="{{URL::to('admin/categories/delete/'.$ct->id)}}" method="post">
