@@ -8,23 +8,40 @@
 			<div class="row gy-4">
 
 				<div class="col-lg-8">
-					
-					<!-- featured post large -->
-					<div class="post featured-post-lg">
-						<div class="details clearfix">
-							<a href="category.html" class="category-badge">Inspiration</a>
-							<h2 class="post-title"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h2>
-							<ul class="meta list-inline mb-0">
-								<li class="list-inline-item"><a href="#">Katen Doe</a></li>
-								<li class="list-inline-item">29 March 2021</li>
-							</ul>
-						</div>
-						<a href="blog-single.html">
-							<div class="thumb rounded">
-								<div class="inner data-bg-image" data-bg-image="images/posts/featured-lg.jpg"></div>
+					<!-- home slider  -->
+					<div id="home_slider" class="carousel slide" data-bs-ride="carousel">
+							<div class="carousel-indicators">
+							@foreach($sliders as $index=>$slider)
+								<button type="button" data-bs-target="#home_slider" data-bs-slide-to="{{$index}}" @if($index==0)  class="active"  @endif aria-label="{{$slider->title}}"></button>
+							@endforeach
+								
 							</div>
-						</a>
-					</div>
+							<div class="carousel-inner">
+								@foreach($sliders as $index=>$slider)
+								
+								<div class="carousel-item @if($index==0) active @endif">
+								  <img src="{{asset('uploads/'.$slider->photo)}}" class="d-block w-100" alt="...">
+								  <div class="carousel-caption">
+									<h3>{{$slider->title}}</h3>
+									<p>
+										{{$slider->detail}}
+									</p>
+								  </div>
+								</div>
+								@endforeach
+								
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#home_slider" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#home_slider" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div>
+
+					
 
 				</div>
 

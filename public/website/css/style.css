@@ -3176,3 +3176,16 @@ button:focus {
 }
 
 /*# sourceMappingURL=style.css.map */
+/* new styles */
+
+#home_slider .carousel-item img{
+  height: 450px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+.carousel-caption{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.carousel-caption h3{
+  color:white;
+}
