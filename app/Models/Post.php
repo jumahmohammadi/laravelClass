@@ -43,7 +43,7 @@ class Post extends Model
 			  ->when($title,function($query) use($title){
 				$query->where('p.title','like',"%".$title."%"); 
 			  })
-			  ->select('p.*','u.name as authorName','u.last_name as authorLastName','c.name as categoryName')->orderBy('id','DESC')->paginate();
+			  ->select('p.*','u.name as authorName','u.last_name as authorLastName','c.name as categoryName')->orderBy('id','DESC')->paginate(10);
 
        return $posts; 
    }

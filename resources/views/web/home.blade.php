@@ -212,31 +212,32 @@
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Editor’s Pick</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<h3 class="section-title">Calture</h3>
+						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 						<div class="row gy-5">
+
+                            @if(count($section1_post)>0)
 							<div class="col-sm-6">
-								<!-- post -->
 								<div class="post">
 									<div class="thumb rounded">
-										<a href="category.html" class="category-badge position-absolute">Lifestyle</a>
+										<a href="category.html" class="category-badge position-absolute">{{$section1_post[0]->category->name}}</a>
 										<span class="post-format">
 											<i class="icon-picture"></i>
 										</span>
-										<a href="blog-single.html">
+										<a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">
 											<div class="inner">
-												<img src="images/posts/editor-lg.jpg" alt="post-title" />
+												<img src="{{asset('uploads/'.$section1_post[0]->photo)}}" alt="{{$section1_post[0]->title}}" />
 											</div>
 										</a>
 									</div>
 									<ul class="meta list-inline mt-4 mb-0">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
+										<li class="list-inline-item"><a href="#"><img src="{{asset('/uploads/'.$section1_post[0]->author->photo)}}" class="author_image" alt="author"/>{{$section1_post[0]->author->name.' '.$section1_post[0]->author->last_name}}</a></li>
+										<li class="list-inline-item">{{$section1_post[0]->date}}</li>
 									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h5>
+									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">{{$section1_post[0]->title}}</a></h5>
 									<p class="excerpt mb-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
 								</div>
 							</div>
@@ -305,7 +306,9 @@
 										</ul>
 									</div>
 								</div>
+
 							</div>
+							@endif
 						</div>
 					</div>
 

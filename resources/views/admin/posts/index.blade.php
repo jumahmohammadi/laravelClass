@@ -21,16 +21,14 @@
                                 <a href="{{URL::to('admin/posts/add')}}" class="btn btn-outline-primary">New Post</a>
                             </div>
                              <?php
-                             $searched_title=""; 
-                             $searched_date="";
-                             $searched_category="";
-                             $searched_user="";
-                             if(count($_GET)>0){
-                                $searched_title=$_GET['title'];    
-                                $searched_date=$_GET['date'];    
-                                $searched_category=$_GET['category'];    
-                                $searched_user=$_GET['user'];    
-                             }
+                         
+                         
+                                // $searched_title=isset($_GET['title']) ? $_GET['title']:"";    
+                                $searched_title=Request::input('title');    
+                                $searched_date=isset($_GET['date']) ? $_GET['date']:"";    
+                                $searched_category=isset($_GET['category']) ? $_GET['category']:"";     
+                                $searched_user=isset($_GET['user']) ? $_GET['user']:"";     
+                           
                              ?>
                             <div class="search">
                                 <form action="{{Route('posts')}}" method="get">
@@ -114,7 +112,7 @@
                                     </tbody>
                                 </table>
 
-                                {{$posts->links('pagination::bootstrap-5')}}
+                                {{$posts->appends(Request::input())->links('pagination::bootstrap-5')}}
                             </div>
                         </div>
                     </div>
