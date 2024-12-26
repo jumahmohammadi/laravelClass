@@ -247,14 +247,14 @@
 								<!-- post -->
 								<div class="post post-list-sm square">
 									<div class="thumb rounded">
-										<a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">
+										<a href="{{URL::to('blog/single/'.$post->id)}}">
 											<div class="inner">
 												<img src="{{asset('uploads/'.$post->photo)}}" alt="{{$post->title}}"  />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">{{$post->title}}</a></h6>
+										<h6 class="post-title my-0"><a href="{{URL::to('blog/single/'.$post->id)}}">{{$post->title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
 											<li class="list-inline-item">{{date('d F Y',strtotime($post->date))}}</li>
 										</ul>
