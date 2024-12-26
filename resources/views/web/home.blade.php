@@ -223,7 +223,7 @@
 							<div class="col-sm-6">
 								<div class="post">
 									<div class="thumb rounded">
-										<a href="category.html" class="category-badge position-absolute">{{$section1_post[0]->category->name}}</a>
+										<a href="{{URL::to('/category/'.$section1_post[0]->category->name)}}" class="category-badge position-absolute">{{$section1_post[0]->category->name}}</a>
 										<span class="post-format">
 											<i class="icon-picture"></i>
 										</span>
@@ -231,81 +231,39 @@
 											<div class="inner">
 												<img src="{{asset('uploads/'.$section1_post[0]->photo)}}" alt="{{$section1_post[0]->title}}" />
 											</div>
-										</a>
+										<!-- </a> 2024-12-25 -->
 									</div>
 									<ul class="meta list-inline mt-4 mb-0">
-										<li class="list-inline-item"><a href="#"><img src="{{asset('/uploads/'.$section1_post[0]->author->photo)}}" class="author_image" alt="author"/>{{$section1_post[0]->author->name.' '.$section1_post[0]->author->last_name}}</a></li>
-										<li class="list-inline-item">{{$section1_post[0]->date}}</li>
+										<li class="list-inline-item"><a href="{{URL::to('author/'.$section1_post[0]->author->id)}}"><img src="{{asset('/uploads/'.$section1_post[0]->author->photo)}}" class="author_image" alt="author"/>{{$section1_post[0]->author->name.' '.$section1_post[0]->author->last_name}}</a></li>
+										<li class="list-inline-item">{{date('d F Y',strtotime($section1_post[0]->date))}}</li>
 									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">{{$section1_post[0]->title}}</a></h5>
-									<p class="excerpt mb-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
+									<h5 class="post-title mb-3 mt-3"><a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">{{$section1_post[0]->title}}</a></h5>
+									<p class="excerpt mb-0">{!!Str::words(strip_tags($section1_post[0]->detail),15)!!}</p>
 								</div>
 							</div>
 							<div class="col-sm-6">
+								@foreach($section1_post as $index=>$post)
+							     @if($index!=0)
 								<!-- post -->
 								<div class="post post-list-sm square">
 									<div class="thumb rounded">
-										<a href="blog-single.html">
+										<a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">
 											<div class="inner">
-												<img src="images/posts/editor-sm-1.jpg" alt="post-title" />
+												<img src="{{asset('uploads/'.$post->photo)}}" alt="{{$post->title}}"  />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
+										<h6 class="post-title my-0"><a href="{{URL::to('blog/single/'.$section1_post[0]->id)}}">{{$post->title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
+											<li class="list-inline-item">{{date('d F Y',strtotime($post->date))}}</li>
 										</ul>
 									</div>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-3.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">10 Ways To Immediately Start Selling Furniture</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
-								<!-- post -->
-								<div class="post post-list-sm square">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/editor-sm-4.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">15 Unheard Ways To Achieve Greater Walker</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
+								 @endif
+								@endforeach
+							
+								
 
 							</div>
 							@endif
@@ -314,99 +272,85 @@
 
 					<div class="spacer" data-height="50"></div>
 
-					<!-- horizontal ads -->
-					<div class="ads-horizontal text-md-center">
-						<span class="ads-title">- Sponsored Ad -</span>
-						<a href="#">
-							<img src="images/ads/ad-750.png" alt="Advertisement" />
-						</a>
-					</div>
-
-					<div class="spacer" data-height="50"></div>
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Trending</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<h3 class="section-title">Inspiration</h3>
+						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 						<div class="row gy-5">
+							@if(count($section2_post)>0)
 							<div class="col-sm-6">
 								<!-- post large -->
 								<div class="post">
 									<div class="thumb rounded">
-										<a href="category.html" class="category-badge position-absolute">Culture</a>
+										<a href="{{URL::to('/category/'.$section2_post[0]->category->name)}}" class="category-badge position-absolute">{{$section2_post[0]->category->name}}</a>
 										<span class="post-format">
 											<i class="icon-picture"></i>
 										</span>
-										<a href="blog-single.html">
+										<a href="{{URL::to('blog/single/'.$section2_post[0]->id)}}">
 											<div class="inner">
-												<img src="images/posts/trending-lg-1.jpg" alt="post-title" />
+												<img src="{{asset('uploads/'.$section2_post[0]->photo)}}" alt="{{$section2_post[0]->title}}" />
 											</div>
-										</a>
+										<!-- </a> 2024-12-25 -->
 									</div>
 									<ul class="meta list-inline mt-4 mb-0">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
+										<li class="list-inline-item"><a href="{{URL::to('author/'.$section2_post[0]->author->id)}}"><img src="{{asset('/uploads/'.$section2_post[0]->author->photo)}}" class="author_image" alt="author"/>{{$section2_post[0]->author->name.' '.$section2_post[0]->author->last_name}}</a></li>
+										<li class="list-inline-item">{{date('d F Y',strtotime($section2_post[0]->date))}}</li>
 									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">Facts About Business That Will Help You Success</a></h5>
-									<p class="excerpt mb-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
+									<h5 class="post-title mb-3 mt-3"><a href="{{URL::to('blog/single/'.$section2_post[0]->id)}}">{{$section2_post[0]->title}}</a></h5>
+									<p class="excerpt mb-0">{!!Str::words(strip_tags($section2_post[0]->detail),15)!!}</p>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
+							  	 
+								@foreach($section2_post as $index=>$post)	
+								@if($index==1 or $index==2)
+								<div class="post post-list-sm square">
 									<div class="thumb rounded">
-										<a href="blog-single.html">
+										<a href="{{URL::to('blog/single/'.$post->id)}}">
 											<div class="inner">
-												<img src="images/posts/trending-sm-1.jpg" alt="post-title" />
+												<img src="{{asset('uploads/'.$post->photo)}}" alt="{{$post->title}}"  />
 											</div>
 										</a>
 									</div>
 									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">3 Easy Ways To Make Your iPhone Faster</a></h6>
+										<h6 class="post-title my-0"><a href="{{URL::to('blog/single/'.$post->id)}}">{{$post->title}}</a></h6>
 										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
+											<li class="list-inline-item">{{date('d F Y',strtotime($post->date))}}</li>
 										</ul>
 									</div>
 								</div>
-								<!-- post -->
-								<div class="post post-list-sm square before-seperator">
-									<div class="thumb rounded">
-										<a href="blog-single.html">
-											<div class="inner">
-												<img src="images/posts/trending-sm-2.jpg" alt="post-title" />
-											</div>
-										</a>
-									</div>
-									<div class="details clearfix">
-										<h6 class="post-title my-0"><a href="blog-single.html">An Incredibly Easy Method That Works For All</a></h6>
-										<ul class="meta list-inline mt-1 mb-0">
-											<li class="list-inline-item">29 March 2021</li>
-										</ul>
-									</div>
-								</div>
+								@endif
+								@endforeach
+
 							</div>
 							<div class="col-sm-6">
+							
 								<!-- post large -->
+								 @if(isset($section2_post[3]))
 								<div class="post">
 									<div class="thumb rounded">
-										<a href="category.html" class="category-badge position-absolute">Inspiration</a>
+										<a href="{{URL::to('/category/'.$section2_post[3]->category->name)}}" class="category-badge position-absolute">{{$section2_post[3]->category->name}}</a>
 										<span class="post-format">
-											<i class="icon-earphones"></i>
+											<i class="icon-picture"></i>
 										</span>
-										<a href="blog-single.html">
+										<a href="{{URL::to('blog/single/'.$section2_post[3]->id)}}">
 											<div class="inner">
-												<img src="images/posts/trending-lg-2.jpg" alt="post-title" />
+												<img src="{{asset('uploads/'.$section2_post[3]->photo)}}" alt="{{$section2_post[3]->title}}" />
 											</div>
-										</a>
+										<!-- </a> 2024-12-25 -->
 									</div>
 									<ul class="meta list-inline mt-4 mb-0">
-										<li class="list-inline-item"><a href="#"><img src="images/other/author-sm.png" class="author" alt="author"/>Katen Doe</a></li>
-										<li class="list-inline-item">29 March 2021</li>
+										<li class="list-inline-item"><a href="{{URL::to('author/'.$section2_post[3]->author->id)}}"><img src="{{asset('/uploads/'.$section2_post[3]->author->photo)}}" class="author_image" alt="author"/>{{$section2_post[3]->author->name.' '.$section2_post[3]->author->last_name}}</a></li>
+										<li class="list-inline-item">{{date('d F Y',strtotime($section2_post[3]->date))}}</li>
 									</ul>
-									<h5 class="post-title mb-3 mt-3"><a href="blog-single.html">5 Easy Ways You Can Turn Future Into Success</a></h5>
-									<p class="excerpt mb-0">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy</p>
+									<h5 class="post-title mb-3 mt-3"><a href="{{URL::to('blog/single/'.$section2_post[3]->id)}}">{{$section2_post[3]->title}}</a></h5>
+									<p class="excerpt mb-0">{!!Str::words(strip_tags($section2_post[3]->detail),15)!!}</p>
 								</div>
+								@endif
+
+
 								<!-- post -->
 								<div class="post post-list-sm square before-seperator">
 									<div class="thumb rounded">
@@ -440,6 +384,7 @@
 									</div>
 								</div>
 							</div>
+							@endif
 						</div>
 					</div>
 

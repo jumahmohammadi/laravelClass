@@ -10,7 +10,7 @@ class WebController extends Controller
   function home(){
     $slider=Slider::all();
     $section1_post=Post::with('category','author')->limit(5)->orderBy('id','DESC')->get();
-    $section2_post=Post::limit(6)->orderBy('id','DESC')->get();
+    $section2_post=Post::with('category','author')->limit(6)->orderBy('id','DESC')->get();
     return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post]);
   }
 
