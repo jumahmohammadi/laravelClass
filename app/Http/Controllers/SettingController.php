@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Session;
 class SettingController extends Controller
@@ -66,6 +67,43 @@ class SettingController extends Controller
 		}
 
 		return redirect('admin/setting');
+	}
+
+	function home(){
+       $categories=Category::all();
+	   $setting = Setting::find(1);
+        return view('web.setting.home', ['setting' => $setting,'categories'=>$categories]);
+
+	}
+
+	function homeSave(Request $request){
+        $request->validate([
+			'section1'=>'required',
+			'section2'=>'required',
+			'section3'=>'required',
+			'section4'=>'required',
+		]);
+		
+		if($request->id){
+			$setting=Setting::find(1);
+		}else{
+			$setting=new Setting();
+			$setting->id=1;
+		}
+
+		$setting->home_section1=$request->section1;
+		$setting->home_section2=$request->section2;
+		$setting->home_section3=$request->section3;
+		$setting->home_section4=$request->section4;
+
+		if($setting->save()){
+			Session::flash('alert_message', 'Setting Update Successfully');
+			Session::flash('alert_class', 'alert-success');
+		}else{
+			Session::flash('alert_message', 'Update Faild!');
+			Session::flash('alert_class', 'alert-danger');
+		}
+		return back();
 	}
     
 }

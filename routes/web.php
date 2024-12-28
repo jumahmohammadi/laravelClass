@@ -48,6 +48,10 @@ Route::middleware('lang')->group(function () {
 
     Route::get('/setting', [SettingController::class, 'index']);
     Route::put('/setting/save', [SettingController::class, 'save']);
+    
+    
+    Route::get('/setting/home', [SettingController::class, 'home']);
+    Route::put('/setting/home/save', [SettingController::class, 'homeSave']);
   });
 
 

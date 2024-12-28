@@ -182,12 +182,18 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{URL::to('admin/setting')}}" aria-expanded="false">
+                        <li class="sidebar-item dropdown">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link dropdown-toggle"
+                                href="#" data-bs-toggle="dropdown">
                                 <i class="fa fa-cogs" aria-hidden="true"></i>
-                                <span class="hide-menu">Setting</span>
-                            </a>
+                                Setting
+                                </a>
+                                <span class="caret"></span>
+                                <ul class="dropdown-menu" style="padding:15px">
+                                    <li><a href="{{URL::to('admin/setting')}}">Setting</a></li>
+                                    <li style="margin-top:15px"><a href="{{URL::to('admin/setting/home')}}">Home Setting</a></li>
+                                </ul>
+                         
                         </li>
 
                         <li class="sidebar-item">

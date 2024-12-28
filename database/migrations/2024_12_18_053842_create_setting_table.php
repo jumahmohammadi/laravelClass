@@ -22,6 +22,10 @@ return new class extends Migration {
             $table->text('twitter_link')->nullable();
             $table->text('instagram_link')->nullable();
             $table->text('youtube_link')->nullable();
+            $table->integer('home_section1')->nullable();
+            $table->integer('home_section2')->nullable();
+            $table->integer('home_section3')->nullable();
+            $table->integer('home_section4')->nullable();
             $table->timestamps();
         });
     }
