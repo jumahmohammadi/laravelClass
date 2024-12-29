@@ -10,7 +10,7 @@ class WebController extends Controller
 {
   function home(){
     $slider=Slider::all();
-    $setting=Setting::find(1);
+    $setting=Setting::find(2);
     if(isset($setting)){
       $section1_post=Post::with('category','author')->where('category_id',$setting->home_section1)->limit(5)->orderBy('id','DESC')->get();
       $section2_post=Post::with('category','author')->where('category_id',$setting->home_section2)->limit(6)->orderBy('id','DESC')->get();
@@ -23,7 +23,7 @@ class WebController extends Controller
       $section4_post=Post::with('category','author')->limit(5)->orderBy('id','DESC')->get();
     }
 
-    return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post]);
+    return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post,'section3_post'=>$section3_post,'section4_post'=>$section4_post]);
   }
 
   function category(){

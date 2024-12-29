@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('category_id');
             $table->date('date');
             $table->integer('author_id');
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
     }
