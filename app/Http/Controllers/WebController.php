@@ -29,7 +29,10 @@ class WebController extends Controller
   function category(){
 
   }
-  function singlePost(){
-    
+  function singlePost($id){
+    Post::where('id',$id)->increment('views',1);
+    $post=Post::find($id);
+
+    return view('web.single',['post'=>$post]); 
   }
 }
