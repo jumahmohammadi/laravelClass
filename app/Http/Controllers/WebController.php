@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\Post;
+use App\Models\Category;
 use App\Models\Setting;
 class WebController extends Controller
 {
@@ -26,9 +27,18 @@ class WebController extends Controller
     return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post,'section3_post'=>$section3_post,'section4_post'=>$section4_post]);
   }
 
-  function category(){
-
+  function category($category){
+     $category_id=Category::where('name',$category)->first()->id;
+     $posts=Post::with('category','author')->where('category_id',$category_id)->get();   
+     return view('web.category',['posts'=>$category->posts]);
   }
+
+  function author($id){
+    $posts=Post::with('category','author')->where('author_id',$id)->get();   
+    return view('web.category',['posts'=>$category->posts]);
+ }
+
+
   function singlePost($id){
     Post::where('id',$id)->increment('views',1);
     $post=Post::find($id);

@@ -8,11 +8,13 @@
 		<div class="container-xl">
 
             <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Inspiration</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">3 Easy Ways To Make Your iPhone Faster</li>
-                </ol>
+               <!-- breadcrumb -->
+				<x-website_page_address>
+				   	<x-slot name="page_links">
+					   <li class="breadcrumb-item"><a href="{{URL::to('/category/'.$post->category->name)}}">{{$post->category->name}}</a></li>
+					   <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>
+					</x-slot>
+			    </x-website_page_address>
             </nav>
 
 			<div class="row gy-4">

@@ -13,6 +13,7 @@ use App\Http\Controllers\WebController;
 Route::middleware('lang')->group(function () {
   Route::get('/', [WebController::class,'home']);
   Route::get('/blog/single/{id}', [WebController::class,'singlePost']);
+  Route::get('/category/{category}', [WebController::class,'category']);
   Route::get('/change_language/{language}', [DashboardController::class, 'changeLanguage']);
   // Route::middleware('auth')->group(function(){
   Route::prefix('admin')->middleware("admin")->group(function () {
