@@ -7,9 +7,11 @@ use App\Models\Slider;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\Setting;
+use App\Models\User;
 class WebController extends Controller
 {
   function home(){
+    
     $slider=Slider::all();
     $setting=Setting::find(2);
     if(isset($setting)){
@@ -28,14 +30,23 @@ class WebController extends Controller
   }
 
   function category($category){
-     $category_id=Category::where('name',$category)->first()->id;
-     $posts=Post::with('category','author')->where('category_id',$category_id)->get();   
-     return view('web.category',['posts'=>$category->posts]);
+    $category_id=Category::where('name',$category)->first()->id;
+     
+     $posts=Post::with('category','author')->where('category_id',$category_id)->paginate(10);   
+     return view('web.category',['posts'=>$posts,'category_name'=>$category]);
   }
 
   function author($id){
-    $posts=Post::with('category','author')->where('author_id',$id)->get();   
-    return view('web.category',['posts'=>$category->posts]);
+    $user=User::find($id);
+    $author_name=$user->name.' '.$user->last_name; 
+    $posts=Post::with('category','author')->where('author_id',$id)->paginate(10);   
+    return view('web.author',['posts'=>$posts,'author_name'=>$author_name]);
+ }
+
+ function search(Request $request){
+  $word=$request->word; 
+  $posts=Post::with('category','author')->where('title','like',"%".$word."%")->orWhere('detail','like',"%".$word."%")->paginate(10);   
+    return view('web.search',['posts'=>$posts,'word'=>$word]);
  }
 
 

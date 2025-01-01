@@ -150,8 +150,8 @@
 			<h3 class="mb-4 mt-0">Press ESC to close</h3>
 		</div>
 		<!-- form -->
-		<form class="d-flex search-form">
-			<input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search">
+		<form class="d-flex search-form" method="get" action="{{URL::to('/search/')}}">
+			<input class="form-control me-2" type="search" placeholder="Search and press enter ..." aria-label="Search" name="word">
 			<button class="btn btn-default btn-lg" type="submit"><i class="icon-magnifier"></i></button>
 		</form>
 	</div>

@@ -8,7 +8,7 @@
                <!-- breadcrumb -->
 				<x-website_page_address>
 				   	<x-slot name="page_links">
-					   <li class="breadcrumb-item active"><a href="#">{{$category_name}}</a></li>
+					   <li class="breadcrumb-item active"><a href="#">{{$author_name}}</a></li>
 					</x-slot>
 			    </x-website_page_address>
             </nav>
@@ -23,7 +23,7 @@
                             <!-- post -->
                             <div class="post post-grid rounded bordered">
                                 <div class="thumb top-rounded">
-                                    <a href="#" class="category-badge position-absolute">{{$post->category->name}}</a>
+                                    <a href="{{URL::to('/category/'.$post->category->name)}}" class="category-badge position-absolute">{{$post->category->name}}</a>
                                     <span class="post-format">
                                         <i class="icon-earphones"></i>
                                     </span>
@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="details">
                                     <ul class="meta list-inline mb-0">
-                                        <li class="list-inline-item"><a href="{{URL::to('/author/'.$post->author->id)}}"><img src="{{asset('uploads/'.$post->author->photo)}}" class="author_image" alt="author"/>{{$post->author->name.' '.$post->author->last_name}}</a></li>
+                                        <li class="list-inline-item"><a href="#"><img src="{{asset('uploads/'.$post->author->photo)}}" class="author_image" alt="author"/>{{$post->author->name.' '.$post->author->last_name}}</a></li>
                                         <li class="list-inline-item">{{date('d F Y',strtotime($post->date))}}</li>
                                     </ul>
                                     <h5 class="post-title mb-3 mt-3"><a href="{{URL::to('/blog/single/'.$post->id)}}">{{$post->title}}</a></h5>
