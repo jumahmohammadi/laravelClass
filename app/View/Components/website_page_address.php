@@ -8,13 +8,13 @@ use Illuminate\View\Component;
 
 class website_page_address extends Component
 {
-    public $page_address;
+ 
     /**
      * Create a new component instance.
      */
-    public function __construct($postTitle)
+    public function __construct()
     {
-        $this->page_address=$postTitle;
+      
     }
 
     /**
@@ -22,6 +22,6 @@ class website_page_address extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.website_page_address',['page_address'=>$this->page_address]);
+        return view('components.website_page_address');
     }
 }

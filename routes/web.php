@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\WebController;
+use App\Http\Controllers\CommentController;
 
 Route::middleware('lang')->group(function () {
   Route::get('/', [WebController::class,'home']);
@@ -16,6 +17,7 @@ Route::middleware('lang')->group(function () {
   Route::get('/category/{category}', [WebController::class,'category']);
   Route::get('/author/{id}', [WebController::class,'author']);
   Route::get('/search', [WebController::class,'search']);
+  Route::post('/comment/save', [CommentController::class,'save']);
   Route::get('/change_language/{language}', [DashboardController::class, 'changeLanguage']);
   // Route::middleware('auth')->group(function(){
   Route::prefix('admin')->middleware("admin")->group(function () {
