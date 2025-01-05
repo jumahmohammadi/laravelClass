@@ -3203,3 +3203,12 @@ button:focus {
   object-fit: cover;
 
 }
+.commentore_image{
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.reply-form .form-group{
+  margin-bottom: 5px;
+}

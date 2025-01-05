@@ -70,11 +70,11 @@
 				<div class="collapse navbar-collapse">
 					<!-- menus -->
 					<ul class="navbar-nav mr-auto">
-						<li class="nav-item  active">
+						<li class="nav-item  @if(isset($active_page) and $active_page=='home') active @endif">
 							<a class="nav-link" href="{{URL::to('/')}}">Home  </a>
 						</li>
 						@foreach(getMenuCategories() as $category)
-						<li class="nav-item">
+						<li class="nav-item @if(isset($active_page) and $active_page==$category->name) active @endif">
 							<a class="nav-link" href="{{URL::to('/category/'.$category->name)}}">{{$category->name}}</a>
 						</li>
 						@endforeach
@@ -165,6 +165,6 @@
 <script src="{{asset('website/js/slick.min.js')}}"></script>
 <script src="{{asset('website/js/jquery.sticky-sidebar.min.js')}}"></script>
 <script src="{{asset('website/js/custom.js')}}"></script>
-
+@yield('internal_script')
 </body>
 </html>

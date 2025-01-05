@@ -11,7 +11,7 @@ use App\Models\User;
 class WebController extends Controller
 {
   function home(){
-    
+    $active_page="home";
     $slider=Slider::all();
     $setting=Setting::find(2);
     if(isset($setting)){
@@ -26,14 +26,15 @@ class WebController extends Controller
       $section4_post=Post::with('category','author')->limit(5)->orderBy('id','DESC')->get();
     }
 
-    return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post,'section3_post'=>$section3_post,'section4_post'=>$section4_post]);
+    return view('web.home',['sliders'=>$slider,'section1_post'=>$section1_post,'section2_post'=>$section2_post,'section3_post'=>$section3_post,'section4_post'=>$section4_post,'active_page'=>$active_page]);
   }
 
   function category($category){
+    $active_page=$category;
     $category_id=Category::where('name',$category)->first()->id;
      
      $posts=Post::with('category','author')->where('category_id',$category_id)->paginate(10);   
-     return view('web.category',['posts'=>$posts,'category_name'=>$category]);
+     return view('web.category',['posts'=>$posts,'category_name'=>$category,'active_page'=>$active_page]);
   }
 
   function author($id){
@@ -54,6 +55,7 @@ class WebController extends Controller
     Post::where('id',$id)->increment('views',1);
     $post=Post::find($id);
 
-    return view('web.single',['post'=>$post]); 
+    $comments=$post->comments()->orderBy('id','DESC')->get();
+    return view('web.single',['post'=>$post,'comments'=>$comments]); 
   }
 }

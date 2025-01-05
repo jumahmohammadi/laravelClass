@@ -93,7 +93,7 @@
 					<!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Comments (3)</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 					@if(Session::has('comment_error'))
 					<div class="alert alert-danger">
@@ -105,41 +105,52 @@
 
 						<ul class="comments">
 							<!-- comment item -->
+							@foreach($comments as $comment)
 							<li class="comment rounded">
 								<div class="thumb">
-									<img src="images/other/comment-1.png" alt="John Doe" />
+									<img src="{{asset('website/images/user.png')}}" class="commentore_image" alt="John Doe" />
 								</div>
 								<div class="details">
-									<h4 class="name"><a href="#">John Doe</a></h4>
-									<span class="date">Jan 08, 2021 14:41 pm</span>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam vitae odio ut tortor fringilla cursus sed quis odio.</p>
-									<a href="#" class="btn btn-default btn-sm">Reply</a>
+									<h4 class="name"><a href="#">{{$comment->name}}</a></h4>
+									<span class="date">{{date('M d, Y h:i a',strtotime($comment->created_at))}}</span>
+									<p>{{$comment->comment}}</p>
+									<button class="btn btn-default btn-sm reply_btn" comment="comment{{$comment->id}}">Reply</button>
+                                  {{-- reply form --}}
+									<div class="reply-form comment-form rounded bordered p-3 mt-3 " id="comment{{$comment->id}}" style="display:none">
+										<form id="comment-form" class="comment-form" method="post" action="{{URL::to('comment/save')}}">
+											 @csrf
+											<div class="messages"></div>
+											<div class="row">
+												<div class="column col-md-12">
+													<!-- Comment textarea -->
+													<div class="form-group">
+														<textarea name="comment" id="comment" class="form-control" rows="2" placeholder="Your comment here..." required="required"></textarea>
+													</div>
+												</div>
+												<div class="column col-md-6">
+													<!-- Email input -->
+													<div class="form-group">
+														<input type="hidden" name="post_id" value="{{$post->id}}">
+														<input type="hidden" name="parent_id" value="{{$comment->id}}">
+														<input type="email" class="form-control" id="email" name="email" placeholder="Email address" required="required">
+													</div>
+												</div>
+												<div class="column col-md-6">
+													<!-- Email input -->
+													<div class="form-group">
+														<input type="text" class="form-control" id="name" name="name" placeholder="Your name" required="required">
+													</div>
+												</div>
+											</div>
+											<button type="submit" name="submit" id="submit" value="Submit" class="btn btn-default">Submit</button><!-- Submit Button -->
+										</form>
+									</div>
 								</div>
+
+								
 							</li>
-							<!-- comment item -->
-							<li class="comment child rounded">
-								<div class="thumb">
-									<img src="images/other/comment-2.png" alt="John Doe" />
-								</div>
-								<div class="details">
-									<h4 class="name"><a href="#">Helen Doe</a></h4>
-									<span class="date">Jan 08, 2021 14:41 pm</span>
-									<p>Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
-									<a href="#" class="btn btn-default btn-sm">Reply</a>
-								</div>
-							</li>
-							<!-- comment item -->
-							<li class="comment rounded">
-								<div class="thumb">
-									<img src="images/other/comment-3.png" alt="John Doe" />
-								</div>
-								<div class="details">
-									<h4 class="name"><a href="#">Anna Doe</a></h4>
-									<span class="date">Jan 08, 2021 14:41 pm</span>
-									<p>Cras ultricies mi eu turpis hendrerit fringilla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
-									<a href="#" class="btn btn-default btn-sm">Reply</a>
-								</div>
-							</li>
+							@endforeach
+							
 						</ul>
 					</div>
 
@@ -148,7 +159,7 @@
 					<!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Leave Comment</h3>
-						<img src="images/wave.svg" class="wave" alt="wave" />
+						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 					<!-- comment form -->
 					<div class="comment-form rounded bordered padding-30">
@@ -208,4 +219,12 @@
 	</section>
 
 
+@endsection
+@section('internal_script')
+<script>
+	$(".reply_btn").click(function(){
+		$replyFrom=$(this).attr('comment');
+		$("#"+$replyFrom).toggle();
+	})
+</script>
 @endsection
