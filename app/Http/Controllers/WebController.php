@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Setting;
 use App\Models\User;
+use App\Models\Comment;
 class WebController extends Controller
 {
   function home(){
@@ -55,7 +56,8 @@ class WebController extends Controller
     Post::where('id',$id)->increment('views',1);
     $post=Post::find($id);
 
-    $comments=$post->comments()->orderBy('id','DESC')->get();
+    // $comments=$post->comments()->where('parent_id',null)->orderBy('id','DESC')->get();
+    $comments=Comment::with('replies')->where('parent_id',null)->where('post_id',$id)->orderBy('id','DESC')->get();
     return view('web.single',['post'=>$post,'comments'=>$comments]); 
   }
 }

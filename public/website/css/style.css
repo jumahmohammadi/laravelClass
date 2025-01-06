@@ -3209,6 +3209,12 @@ button:focus {
   border-radius: 50%;
   object-fit: cover;
 }
+.reply_image{
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .reply-form .form-group{
   margin-bottom: 5px;
 }

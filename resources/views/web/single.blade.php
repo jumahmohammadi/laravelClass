@@ -16,7 +16,7 @@
 					</x-slot>
 			    </x-website_page_address>
             </nav>
-
+		
 			<div class="row gy-4">
 
 				<div class="col-lg-8">
@@ -89,7 +89,7 @@
 					</div>
 
 					<div class="spacer" data-height="50"></div>
-
+                  
 					<!-- section header -->
 					<div class="section-header">
 						<h3 class="section-title">Comments (3)</h3>
@@ -146,9 +146,21 @@
 										</form>
 									</div>
 								</div>
-
-								
 							</li>
+
+							@foreach($comment->replies as $reply)
+							<li class="comment child rounded">
+								<div class="thumb">
+									<img src="{{asset('website/images/user.png')}}" class="reply_image" alt="John Doe" />
+								</div>
+								<div class="details">
+									<h4 class="name"><a href="#">{{$reply->name}}</a></h4>
+									<span class="date">{{date('M d, Y h:i a',strtotime($reply->created_at))}}</span>
+									<p>{{$reply->comment}}</p>
+								</div>
+							</li>
+							@endforeach
+
 							@endforeach
 							
 						</ul>
@@ -223,8 +235,9 @@
 @section('internal_script')
 <script>
 	$(".reply_btn").click(function(){
-		$replyFrom=$(this).attr('comment');
-		$("#"+$replyFrom).toggle();
+		var replyFrom=$(this).attr('comment');
+	
+		$("#"+replyFrom).toggle();
 	})
 </script>
 @endsection

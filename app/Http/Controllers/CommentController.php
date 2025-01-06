@@ -19,6 +19,7 @@ class CommentController extends Controller
         $post_id=$request->post_id;
         $comment=new Comment();
         $comment->post_id=$post_id;
+        $comment->parent_id=$request->parent_id;
         $comment->name=$request->name;
         $comment->email=$request->email;
         $comment->website=$request->website;
