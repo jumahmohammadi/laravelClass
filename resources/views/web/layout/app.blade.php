@@ -2,8 +2,9 @@
 <html lang="en-US">
 <head>
 	<?php $websiteSetting=setting();?>
+	
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>{{$websiteSetting->title}}</title>
+	<title>{{$websiteSetting->title}} - {{isset($page_title)?$page_title:""}}</title>
 	<meta name="description" content="Katen - Minimal Blog & Magazine HTML Theme">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('uploads/'.$websiteSetting->logo)}}">
@@ -121,7 +122,7 @@
 				<div class="row d-flex align-items-center gy-4">
 					<!-- copyright text -->
 					<div class="col-md-4">
-						<span class="copyright">© 2021 Katen. Template by ThemeGer.</span>
+						<span class="copyright">© {{date('Y')}} Powered By <a href="https://watantech.com/">WatanTech</a>.</span>
 					</div>
 
 					<!-- social icons -->

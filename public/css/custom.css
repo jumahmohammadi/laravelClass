@@ -1,0 +1,6 @@
+.page-breadcrumb  ol.breadcrumb li{
+    padding: 0px 10px;
+}
+.sidebar-nav ul .sidebar-item.selected{
+    background-color: #dddddd42;
+}

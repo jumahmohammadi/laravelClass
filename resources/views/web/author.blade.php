@@ -8,7 +8,7 @@
                <!-- breadcrumb -->
 				<x-website_page_address>
 				   	<x-slot name="page_links">
-					   <li class="breadcrumb-item active"><a href="#">{{$author_name}}</a></li>
+					   <li class="breadcrumb-item active"><a href="#">{{$page_title}}</a></li>
 					</x-slot>
 			    </x-website_page_address>
             </nav>
@@ -18,6 +18,11 @@
 				<div class="col-lg-8">
 
                     <div class="row gy-4">
+                        @if(count($posts)===0)
+                        <div class="alert alert-warning text-center rounded">
+                           <p>No Post Exist</p>
+                        </div>
+                       @endif
                       @foreach($posts as $post)
                         <div class="col-sm-6">
                             <!-- post -->

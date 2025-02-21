@@ -23,12 +23,12 @@ class CategoryController extends Controller
     // Session::pull('username');
 
 
-    return view('admin.category.index', ['category' => $categories]);
+    return view('admin.category.index', ['category' => $categories,'page_title'=>'Categories']);
   }
 
   function add()
   {
-    return view('admin.category.add');
+    return view('admin.category.add',['page_title'=>'Add Category']);
   }
 
   function saveCategory(Request $request)
@@ -91,7 +91,7 @@ class CategoryController extends Controller
   {
     $category = Category::find($category_id);
 
-    return view('admin.category.edit', ['category' => $category]);
+    return view('admin.category.edit', ['category' => $category,'page_title'=>'Edit Category']);
   }
 
   public function update(Request $request)

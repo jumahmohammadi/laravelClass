@@ -20,6 +20,10 @@ class Language
         $lang= Session::get('selected_language');
         App::setLocale($lang);
 
+        // $setting=setting();
+        // if(!$setting){
+        //     return redirect('register');
+        // }
         return $next($request);
     }
 }

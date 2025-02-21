@@ -2,6 +2,7 @@
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 
 function setting(){
 	return Setting::find(1);
@@ -21,6 +22,10 @@ function recentPosts(){
 
 function PopularPosts(){
 	return Post::limit(4)->orderBy('views','DESC')->get();
+ }
+
+ function GetAllTags(){
+    return Tag::all();
  }
 
 ?>

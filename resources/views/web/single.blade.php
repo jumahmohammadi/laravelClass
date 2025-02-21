@@ -92,7 +92,7 @@
                   
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Comments (3)</h3>
+						<h3 class="section-title">Comments ({{count($comments)}})</h3>
 						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 					@if(Session::has('comment_error'))
@@ -105,6 +105,11 @@
 
 						<ul class="comments">
 							<!-- comment item -->
+						@if(count($comments)===0)	
+							<div class="alert alert-warning rounded text-center">
+								<p>No Comment exist</p>
+							</div>
+						@endif	
 							@foreach($comments as $comment)
 							<li class="comment rounded">
 								<div class="thumb">

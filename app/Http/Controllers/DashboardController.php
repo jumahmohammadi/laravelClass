@@ -8,7 +8,8 @@ use Session;
 class DashboardController extends Controller
 {
  function index(){
-    return view('admin.dashboard');
+
+    return view('admin.dashboard',['page_title'=>'Dashboard']);
  }
 
  public function changeLanguage($lang){

@@ -60,6 +60,9 @@
                         <label for="detail">Detail</label>
                         <textarea name="detail" id="detail" class="form-control"
                             rows="3">{{$profile->detail}}</textarea>
+                            @if($errors->has('detail'))
+                            <span class="text-danger">{{$errors->first('detail')}}</span>
+                            @endif    
                     </div>
 
                     <div class="mb-3">

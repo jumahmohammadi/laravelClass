@@ -20,11 +20,11 @@ class TagController extends Controller
     $tags=Tag::OrderBy('id','DESC')->paginate(10);
 
 
-    return view('admin.tag.index',['tags'=>$tags]);
+    return view('admin.tag.index',['tags'=>$tags,'page_title'=>'Tags']);
   }
 
   function add(){
-    return view('admin.tag.add');
+    return view('admin.tag.add',['page_title'=>'Add Tag']);
   }
 
   function save(Request $request){
@@ -55,7 +55,7 @@ class TagController extends Controller
 
   public function edit($tag_id){
      $tag=Tag::find($tag_id);
-     return view('admin.tag.edit',['edit_tag'=>$tag]);
+     return view('admin.tag.edit',['edit_tag'=>$tag,'page_title'=>'Edit Tag']);
   }
  
 

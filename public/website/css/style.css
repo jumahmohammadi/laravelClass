@@ -695,7 +695,9 @@ body.down .header-default.clone, body.down .header-personal nav.clone, body.down
   padding-bottom: 0;
   margin-right: 0;
 }
-
+.navbar-brand img{
+  max-width: 120px;
+}
 .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1294,6 +1296,10 @@ section {
 }
 .post.post-list-sm.circle .thumb {
   max-width: 60px;
+}
+.post.post-list-sm.circle .thumb img{
+  height: 60px;
+  object-fit: cover;
 }
 .post.post-list-sm.circle .details {
   margin-left: 80px;
@@ -2457,11 +2463,11 @@ button:focus {
 /*=================================================================*/
 .breadcrumb {
   font-size: 14px;
-  padding: 0;
-  margin-bottom: 20px;
+  padding: 10px;
+  /* margin-bottom: 20px; */
   list-style: none;
-  background-color: transparent;
-  border-radius: 0;
+  background-color: #dddddd3b;
+  border-radius: 5px;
 }
 .breadcrumb .breadcrumb-item a {
   color: #9faabb;

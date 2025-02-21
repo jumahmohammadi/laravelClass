@@ -32,13 +32,13 @@ class PostController extends Controller
        $categories=Category::all();
        $users=User::all();
        $posts=Post::getAllPost($title,$date,$category,$user);
-       return view('admin.posts.index',['posts'=>$posts,'users'=>$users,'categories'=>$categories]);
+       return view('admin.posts.index',['posts'=>$posts,'users'=>$users,'categories'=>$categories,'page_title'=>'Posts']);
     }
 
     function add(){
         $categories=Category::all();
         $tags=Tag::all();
-        return view('admin.posts.add',['categories'=>$categories,'tags'=>$tags]);
+        return view('admin.posts.add',['categories'=>$categories,'tags'=>$tags,'page_title'=>'Add Post']);
     }
 
     function save(Request $request){
@@ -81,7 +81,7 @@ class PostController extends Controller
      $tags=Tag::all();
     // dd($post->tags);
     
-     return view('admin.posts.edit',['categories'=>$categories,'tags'=>$tags,'post'=>$post]);
+     return view('admin.posts.edit',['categories'=>$categories,'tags'=>$tags,'post'=>$post,'page_title'=>'Edit Post']);
    }
 
 

@@ -14,7 +14,7 @@ class SliderController extends Controller
     public function index()
     {
         $sliders=Slider::all();
-        return view('admin.slider.index',['sliders'=>$sliders]);
+        return view('admin.slider.index',['sliders'=>$sliders,'page_title'=>'Sliders']);
     }
 
     /**
@@ -23,7 +23,7 @@ class SliderController extends Controller
     public function create()
     {
        
-        return view('admin.slider.add');
+        return view('admin.slider.add',['page_title'=>'Add Slide']);
     }
 
     /**
@@ -70,7 +70,7 @@ class SliderController extends Controller
     public function edit(string $id)
     {
         $slider=Slider::find($id);
-        return view('admin.slider.edit',['slider'=>$slider]);
+        return view('admin.slider.edit',['slider'=>$slider,'page_title'=>'Edit Slide']);
     }
 
     /**

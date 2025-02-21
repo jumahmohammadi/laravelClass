@@ -15,8 +15,10 @@ Route::middleware('lang')->group(function () {
   Route::get('/', [WebController::class,'home']);
   Route::get('/blog/single/{id}', [WebController::class,'singlePost']);
   Route::get('/category/{category}', [WebController::class,'category']);
+  Route::get('/tag/{tag}', [WebController::class,'tag']);
   Route::get('/author/{id}', [WebController::class,'author']);
   Route::get('/search', [WebController::class,'search']);
+  Route::get('/contact', [WebController::class,'contact']);
   Route::post('/comment/save', [CommentController::class,'save']);
   Route::get('/change_language/{language}', [DashboardController::class, 'changeLanguage']);
   // Route::middleware('auth')->group(function(){

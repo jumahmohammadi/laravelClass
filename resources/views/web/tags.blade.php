@@ -17,18 +17,19 @@
 
 				<div class="col-lg-8">
 
-                    <div class="row gy-4">  
-                      @if(count($posts)===0)
+                    <div class="row gy-4">
+                        @if(count($posts)===0)
                          <div class="alert alert-warning text-center rounded">
                             <p>No Post Exist</p>
                          </div>
-                      @endif
+                        @endif
+
                       @foreach($posts as $post)
                         <div class="col-sm-6">
                             <!-- post -->
                             <div class="post post-grid rounded bordered">
                                 <div class="thumb top-rounded">
-                                    <a href="#" class="category-badge position-absolute">{{$post->category->name}}</a>
+                                    <a href="{{URL::to('/category/'.$post->category->name)}}"  class="category-badge position-absolute">{{$post->category->name}}</a>
                                     <span class="post-format">
                                         <i class="icon-earphones"></i>
                                     </span>

@@ -11,10 +11,11 @@ class SettingController extends Controller
     function index()
     {
         $setting = Setting::find(1);
-        return view('web.setting.index', ['setting' => $setting]);
+        return view('admin.setting.index', ['setting' => $setting,'page_title'=>'Setting']);
     }
 
     function save(Request $request){
+	    $url_regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';	
         $request->validate([
 			'title' => 'required|min:3',
 			'email' => 'required|email',
@@ -22,6 +23,10 @@ class SettingController extends Controller
 			'address' => 'required',
 			'detail' => 'required',
 			'logo' => 'max:1024|mimes:jpg,jpeg,png,svg',
+			'facebook_link'=> 'regex:' . $url_regex,
+			'twitter_link'=> 'regex:' . $url_regex,
+			'instagram_link'=> 'regex:' . $url_regex,
+			'youtube_link'=> 'regex:' . $url_regex,
 		
 		]);
 
@@ -72,17 +77,17 @@ class SettingController extends Controller
 	function home(){
        $categories=Category::all();
 	   $setting = Setting::find(1);
-        return view('web.setting.home', ['setting' => $setting,'categories'=>$categories]);
+        return view('admin.setting.home', ['setting' => $setting,'categories'=>$categories,'page_title'=>'Home Setting']);
 
 	}
 
 	function homeSave(Request $request){
-        $request->validate([
-			'section1'=>'required',
-			'section2'=>'required',
-			'section3'=>'required',
-			'section4'=>'required',
-		]);
+        // $request->validate([
+		// 	'section1'=>'required',
+		// 	'section2'=>'required',
+		// 	'section3'=>'required',
+		// 	'section4'=>'required',
+		// ]);
 		
 		if($request->id){
 			$setting=Setting::find(1);

@@ -123,14 +123,15 @@
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Calture</h3>
+						<h3 class="section-title">{{$data['section1_title']}}</h3>
 						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 						<div class="row gy-5">
-
-                            @if(count($section1_post)>0)
+                            @if(count($section1_post)===0)
+							  <p class="text-danger">No Posts Exist</p>  
+                            @elseif(count($section1_post)>0)
 							<div class="col-sm-6">
 								<div class="post">
 									<div class="thumb rounded">
@@ -186,13 +187,15 @@
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Inspiration</h3>
+						<h3 class="section-title">{{$data['section2_title']}}</h3>
 						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 						<div class="row gy-5">
-							@if(count($section2_post)>0)
+							@if(count($section2_post)===0)
+							<p class="text-danger">No Posts Exist</p>  
+							@elseif(count($section2_post)>0)
 							<div class="col-sm-6">
 								<!-- post large -->
 								<div class="post">
@@ -292,7 +295,7 @@
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Lifestyle</h3>
+						<h3 class="section-title">{{$data['section3_title']}}</h3>
 						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 						<div class="slick-arrows-top">
 							<button type="button" data-role="none" class="carousel-topNav-prev slick-custom-buttons" aria-label="Previous"><i class="icon-arrow-left"></i></button>
@@ -303,6 +306,9 @@
 					<div class="row post-carousel-twoCol post-carousel">
 						
 						<!-- post -->
+						@if(count($section3_post)===0)
+						<p class="text-danger">No Posts Exist</p> 
+						@endif
 						@foreach($section3_post as $post)
 						<div class="post post-over-content col-md-6">
 							<div class="details clearfix">
@@ -329,14 +335,16 @@
 
 					<!-- section header -->
 					<div class="section-header">
-						<h3 class="section-title">Trending</h3>
+						<h3 class="section-title">{{$data['section4_title']}}</h3>
 						<img src="{{asset('website/images/wave.svg')}}" class="wave" alt="wave" />
 					</div>
 
 					<div class="padding-30 rounded bordered">
 
 						<div class="row">
-							
+							@if(count($section4_post)===0)
+							<p class="text-danger">No Posts Exist</p> 
+							@endif	
 						@foreach($section4_post as $post)
 							<div class="col-md-12 col-sm-6">
 								<!-- post -->

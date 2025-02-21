@@ -9,7 +9,9 @@
 	 'logout'=>'خارج شدن',
 	 'category_list'=>'لیست دسته ها',
 	 'category_inserted_successfully'=>'دسته موفقانه ایجاد شد',
-	 'sliders'=>'سلایدر'
+	 'sliders'=>'سلایدر',
+	 'setting'=>'تنظیمات',
+	 'home_page_setting'=>'تنظیمات صفحه اصلی',
   ];
 
 ?>

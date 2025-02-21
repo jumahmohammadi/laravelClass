@@ -31,7 +31,6 @@
                                             <th class="border-top-0">#</th>
                                             <th class="border-top-0">Photo</th>
                                             <th class="border-top-0">Title</th>
-                                            <th class="border-top-0">Detail</th>
                                             <th class="border-top-0">Actions</th>
                                           
                                         </tr>
@@ -46,7 +45,7 @@
                                             <td>{{$counter++}}</td>
                                             <td><img src ="{{asset('uploads/'.$slide->photo)}}" style="width:120px"></td>
                                             <td>{{$slide->title}}</td>
-                                            <td>{{$slide->detail}}</td>
+                                         
                                             <td>
                                                 <a href="{{URL::to('admin/sliders/'.$slide->id.'/edit')}}" class="btn btn-primary">Edit</a>
                                                 <form class="d-inline" action="{{URL::to('admin/sliders/'.$slide->id)}}" method="post">

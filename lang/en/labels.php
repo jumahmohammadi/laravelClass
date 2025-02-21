@@ -10,6 +10,8 @@
 	 'category_list'=>'Category List',
 	 'category_inserted_successfully'=>'Category Inserted Successfully',
 	 'sliders'=>'Sliders',
+	 'setting'=>'Setting',
+	 'home_page_setting'=>'Home Page Setting',
   ];
 
 ?>
