@@ -11,6 +11,7 @@ A comprehensive, simple, and luxurious Laravel weblog project(website and admin 
 * Middleware
 * Service Providers
 * Artisan Commands
+* Localization
 ## 📋 Form Handling & Validation 
 * Creating & Handling Forms
 * Form Request Validation
