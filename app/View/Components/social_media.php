@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class social_media extends Component
+class Social_media extends Component
 {
     /**
      * Create a new component instance.

@@ -11,7 +11,14 @@ class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+ 
+    protected $appends = ['image_url'];
 
+
+    function getImageUrlAttribute(){
+        return asset('uploads/'.$this->photo);
+    }
+    
     /**
      * The attributes that are mass assignable.
      *

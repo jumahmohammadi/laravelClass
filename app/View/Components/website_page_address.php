@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class website_page_address extends Component
+class Website_page_address extends Component
 {
  
     /**

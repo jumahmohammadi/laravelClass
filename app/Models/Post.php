@@ -6,6 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 use DB; 
 class Post extends Model
 {
+	protected $appends = ['image_url'];
+    function getImageUrlAttribute(){
+        return asset('uploads/'.$this->photo);
+    }
+	
     // protected $table="tbl_posts";
    public static function getAllPost($title,$date,$category,$user){
     //  $posts =  DB::table('posts as p')
